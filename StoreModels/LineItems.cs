@@ -1,6 +1,6 @@
 using System;
 
-namespace P0
+namespace StoreModels
 {
     class LineItems
     {

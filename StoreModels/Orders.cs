@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace P0
+namespace StoreModels
 {
     class Orders
     {
