@@ -12,8 +12,15 @@ namespace StoreUI
     }
     public interface IMenu
     {
+        /// <summary>
+        /// Shows the menu
+        /// </summary>
         void Menu();
 
+        /// <summary>
+        /// Reads user input to respond to the user's choice
+        /// </summary>
+        /// <returns>A MenuOptions enum based off of the users input</returns>
         MenuOptions YourChoice();
     }
 }
