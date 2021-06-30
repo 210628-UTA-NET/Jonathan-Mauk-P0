@@ -10,7 +10,6 @@ namespace P0
         static void Main(string[] args)
         {
             IMenu menu = new MainMenu();
-            AddCustomerMenu addCustomerMenu;
             List<string> customers = new List<string>();
             bool stay = true;
             MenuOptions choice = MenuOptions.MainMenu;
@@ -23,7 +22,7 @@ namespace P0
                         stay = false;
                         break;
                     case MenuOptions.ListCustomerMenu:
-                        menu = new ListCustomerMenu(customers);
+                        menu = new ListCustomerMenu();
                         break;
                     case MenuOptions.AddCustomerMenu:
                         menu = new AddCustomerMenu();
@@ -31,18 +30,6 @@ namespace P0
                     case MenuOptions.MainMenu:
                         menu = new MainMenu();
                         break;
-                    case MenuOptions.AddCustomer:
-                        addCustomerMenu = menu as AddCustomerMenu;
-                        Customer customer = new Customer();
-                        customer.Name = addCustomerMenu.Name;
-                        customer.Address = addCustomerMenu.Address;
-                        customer.Email = addCustomerMenu.Email;
-                        customer.PhoneNumber = addCustomerMenu.PhoneNumber;
-                        customers.Add(customer.ToString());
-                        Console.WriteLine("Customer has been added");
-                        menu = new MainMenu();
-                        break;
-                        
                     default:
                         Console.WriteLine("Could not understand input.");
                         break;

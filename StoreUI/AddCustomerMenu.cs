@@ -1,4 +1,5 @@
 using System;
+using StoreAppBL;
 
 namespace StoreUI
 {
@@ -8,11 +9,6 @@ namespace StoreUI
         {
             
         }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-
         public void Menu()
         {
             Console.WriteLine("====Add Customer Menu====");
@@ -27,14 +23,28 @@ namespace StoreUI
             if (info == "0") {
                 return MenuOptions.MainMenu;
             }
-            Name = info;
+            string name = info;
             Console.WriteLine("Enter the customer's address.");
-            Address = Console.ReadLine(); 
+            string address = Console.ReadLine(); 
             Console.WriteLine("Enter the customer's email.");
-            Email = Console.ReadLine(); 
+            string email = Console.ReadLine(); 
             Console.WriteLine("Enter the customer's phone number.");
-            PhoneNumber = Console.ReadLine(); 
-            return MenuOptions.AddCustomer;
+            string phoneNumber = Console.ReadLine(); 
+            
+            if (CustomerBL.AddCustomer(name, address, email, phoneNumber))
+            {
+                System.Console.WriteLine("The Customer was Successfully added!");
+            }
+            else
+            {
+                System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.Console.WriteLine("The Customer could not be added.");
+                System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            }
+            System.Console.WriteLine("Press Enter to return to Main Menu.");
+            Console.ReadLine();
+            
+            return MenuOptions.MainMenu;
         }
     }
 }

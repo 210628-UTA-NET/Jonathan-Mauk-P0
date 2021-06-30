@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace StoreAppData
 {
-    public class CustomerDL : ICustomerDL
+    public class CustomerDL// : ICustomerDL
     {
-        private const string _customerFilePath = "./StoreAppData/StoredData/Customers.json";
-        public bool AddCustomer(Customer item)
+        private const string _customerFilePath = "StoreAppData/StoredData/Customers.json";
+        public static bool AddCustomer(Customer item)
         {
             bool val = false;
             try
@@ -18,6 +18,8 @@ namespace StoreAppData
                 List<Customer> customers = JsonSerializer.Deserialize<List<Customer>>(customersFile);
                 customers.Add(item);
                 JsonSerializer.Serialize<List<Customer>>(customers);
+                string text = JsonSerializer.Serialize(customers, new JsonSerializerOptions(){WriteIndented = true});
+                File.WriteAllText(_customerFilePath, text);
                 val = true;
             }
             catch (System.Exception)
@@ -27,7 +29,7 @@ namespace StoreAppData
             return val;
         }
 
-        public Customer FindCustomer(string name)
+        public static Customer FindCustomer(string name)
         {
             try
             {
@@ -48,7 +50,7 @@ namespace StoreAppData
             }
         }
 
-        public List<Customer> RetrieveCustomers()
+        public static List<Customer> RetrieveCustomers()
         {
             try
             {

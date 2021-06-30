@@ -1,15 +1,16 @@
 ﻿using System;
 using StoreModels;
 using StoreAppData;
+using System.Collections.Generic;
 
 namespace StoreAppBL
 {
     public class CustomerBL
     {
-        public static void AddCustomer(string name, string address, string email, string phone)
+        public static bool AddCustomer(string name, string address, string email, string phone)
         {
             Customer custo = new Customer(name, address, email, phone);
-            //CustomerData.AddCustomer(custo);
+            return CustomerDL.AddCustomer(custo);
         }
 
         public static Customer SearchCustomer(string name)
@@ -21,7 +22,12 @@ namespace StoreAppBL
             //         return item;
             //     }
             // }
-            return null;
+            return CustomerDL.FindCustomer(name);
+        }
+
+        public static List<Customer> ListCustomers()
+        {
+            return CustomerDL.RetrieveCustomers();
         }
     }
 }

@@ -1,25 +1,22 @@
 using System;
 using System.Collections.Generic;
+using StoreAppBL;
+using StoreModels;
 
 namespace StoreUI 
 {
     public class ListCustomerMenu : IMenu
     {
-        private List<string> lists = new List<string>();
-        public ListCustomerMenu(List<string> list)
+        public ListCustomerMenu()
         {
-            foreach (string item in list)
-            {
-                lists.Add(item);
-            }
         }
 
         public void Menu()
         {
             Console.WriteLine("Here is a list of the Customers.");
-            foreach (string item in lists)
+            foreach (Customer item in CustomerBL.ListCustomers())
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.ToString());
             }
         }
 

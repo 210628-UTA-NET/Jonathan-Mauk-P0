@@ -25,6 +25,7 @@ namespace StoreUI
             switch (info)
             {
                 case "0":
+                val = MenuOptions.Exit;
                     break;
                 case "1":
                     val = MenuOptions.ListCustomerMenu;
