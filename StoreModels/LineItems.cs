@@ -2,7 +2,7 @@ using System;
 
 namespace StoreModels
 {
-    class LineItems
+    public class LineItems
     {
         public Products Product { get; set; }
         public int Count { get; set; }

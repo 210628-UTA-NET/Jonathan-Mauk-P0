@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace StoreModels 
 {
-    class Customer 
+    public class Customer 
     {
         public string Name { get; set; }
         public string Address { get; set; }
@@ -13,6 +13,13 @@ namespace StoreModels
         public Customer()
         {
             
+        }
+        public Customer(string name, string address, string email, string phone)
+        {
+            Name = name;
+            Address = address;
+            Email = email;
+            PhoneNumber = phone;
         }
 
         public override string ToString()
