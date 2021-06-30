@@ -30,6 +30,9 @@ namespace P0
                     case MenuOptions.MainMenu:
                         menu = new MainMenu();
                         break;
+                    case MenuOptions.SearchCustomer:
+                        menu = new CustomerSearchMenu();
+                        break;
                     default:
                         Console.WriteLine("Could not understand input.");
                         break;
