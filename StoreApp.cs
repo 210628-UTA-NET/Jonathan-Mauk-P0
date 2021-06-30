@@ -13,25 +13,25 @@ namespace P0
             AddCustomerMenu addCustomerMenu;
             List<string> customers = new List<string>();
             bool stay = true;
-            string choice = "";
+            MenuOptions choice = MenuOptions.MainMenu;
             while (stay) {
                 menu.Menu();
                 choice = menu.YourChoice();
                 switch (choice)
                 {
-                    case "0":
+                    case MenuOptions.Exit:
                         stay = false;
                         break;
-                    case "List_Cust_Menu":
-                        menu = new ListCustomerUI(customers);
+                    case MenuOptions.ListCustomerMenu:
+                        menu = new ListCustomerMenu(customers);
                         break;
-                    case "Add_Cust_Menu":
+                    case MenuOptions.AddCustomerMenu:
                         menu = new AddCustomerMenu();
                         break;
-                    case "MainMenu":
+                    case MenuOptions.MainMenu:
                         menu = new MainMenu();
                         break;
-                    case "AddCustomer":
+                    case MenuOptions.AddCustomer:
                         addCustomerMenu = menu as AddCustomerMenu;
                         Customer customer = new Customer();
                         customer.Name = addCustomerMenu.Name;

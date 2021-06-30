@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace StoreUI 
 {
-    public class ListCustomerUI : IMenu
+    public class ListCustomerMenu : IMenu
     {
         private List<string> lists = new List<string>();
-        public ListCustomerUI(List<string> list)
+        public ListCustomerMenu(List<string> list)
         {
             foreach (string item in list)
             {
@@ -23,11 +23,11 @@ namespace StoreUI
             }
         }
 
-        public string YourChoice()
+        public MenuOptions YourChoice()
         {
             Console.WriteLine("Press Enter to return to the main menu");
             Console.ReadLine();
-            return "MainMenu";
+            return MenuOptions.MainMenu;
         }
     }
 }

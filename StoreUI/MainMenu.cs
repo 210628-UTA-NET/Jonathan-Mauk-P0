@@ -18,24 +18,26 @@ namespace StoreUI
             Console.WriteLine("[2] Add Customer");
         }
 
-        public string YourChoice()
+        public MenuOptions YourChoice()
         {
             string info = Console.ReadLine();
+            MenuOptions val = MenuOptions.MainMenu;
             switch (info)
             {
                 case "0":
                     break;
                 case "1":
-                    info = "List_Cust_Menu";
+                    val = MenuOptions.ListCustomerMenu;
                     break;
                 case "2":
-                    info = "Add_Cust_Menu";
+                    val = MenuOptions.AddCustomerMenu;
                     break;
                 default:
-                    info = "unknown";
+                    Console.WriteLine("Unable todetermine input.");
+                    val = MenuOptions.MainMenu;
                     break;
             }
-            return info;
+            return val;
         }
     }
 }

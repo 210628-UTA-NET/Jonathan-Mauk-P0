@@ -19,24 +19,22 @@ namespace StoreUI
             Console.WriteLine("Welcome! Please enter the customer's information");
         }
 
-        public string YourChoice()
+        public MenuOptions YourChoice()
         {
             string info = "";
             Console.WriteLine("Enter the customer's name or enter 0 to return to the main menu.");
             info += Console.ReadLine(); 
             if (info == "0") {
-                info = "MainMenu";
-                return info;
+                return MenuOptions.MainMenu;
             }
             Name = info;
-            info = "AddCustomer";
             Console.WriteLine("Enter the customer's address.");
             Address = Console.ReadLine(); 
             Console.WriteLine("Enter the customer's email.");
             Email = Console.ReadLine(); 
             Console.WriteLine("Enter the customer's phone number.");
             PhoneNumber = Console.ReadLine(); 
-            return info;
+            return MenuOptions.AddCustomer;
         }
     }
 }
