@@ -1,4 +1,5 @@
 ﻿using System;
+using StoreModels;
 using System.Collections.Generic;
 
 namespace StoreAppData
@@ -6,25 +7,25 @@ namespace StoreAppData
     /// <summary>
     /// Responsible for accessing the database
     /// </summary>
-    public interface IRepository
+    public interface ICustomerDL
     {
         /// <summary>
-        /// Finds an object from the database 
+        /// Finds a Customer from the database 
         /// </summary>
-        /// <returns>The object being searched for</returns>
-        object Find();
+        /// <returns>The Customer being searched for</returns>
+        Customer FindCustomer(string name);
 
         /// <summary>
-        /// Retrieves all items from the database
+        /// Retrieves all Customers from the database
         /// </summary>
-        /// <returns>A list of all items in the database</returns>
-        List<object> RetrieveAll();
+        /// <returns>A list of all Customers in the database</returns>
+        List<Customer> RetrieveCustomers();
 
         /// <summary>
-        /// Add an item to the database
+        /// Add a Customer to the database
         /// </summary>
-        /// <param name="item">The item to be added to the database</param>
-        /// <returns>True if the item was successfully added</returns>
-        bool Add(object item);
+        /// <param name="item">The Customer to be added to the database</param>
+        /// <returns>True if the Customer was successfully added</returns>
+        bool AddCustomer(Customer item);
     }
 }
