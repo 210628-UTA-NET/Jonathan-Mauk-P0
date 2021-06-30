@@ -8,7 +8,7 @@ namespace StoreAppData
 {
     public class CustomerDL// : ICustomerDL
     {
-        private const string _customerFilePath = "StoreAppData/StoredData/Customers.json";
+        private const string _customerFilePath = "../StoreAppData/StoredData/Customers.json";
         public static bool AddCustomer(Customer item)
         {
             bool val = false;
