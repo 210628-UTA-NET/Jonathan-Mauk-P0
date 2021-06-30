@@ -8,6 +8,7 @@ namespace StoreUI
         AddCustomer,
         AddCustomerMenu,
         ListCustomerMenu,
+        SearchCustomer,
         Exit
     }
     public interface IMenu

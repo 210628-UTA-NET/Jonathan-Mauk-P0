@@ -21,8 +21,7 @@ namespace StoreAppBL
             //         return item;
             //     }
             // }
-            // return null;
-            throw new NotImplementedException("Customer Search is not Implemented");
+            return null;
         }
     }
 }
