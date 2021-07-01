@@ -13,10 +13,11 @@ namespace StoreUI
         {
             Console.WriteLine("====Main Menu====");
             Console.WriteLine("Welcome! Please make a selection");
-            Console.WriteLine("[0] Exit");
-            Console.WriteLine("[1] List Customers");
-            Console.WriteLine("[2] Add Customer");
+            Console.WriteLine("[4] View Store Inventory");
             Console.WriteLine("[3] Search Customer");
+            Console.WriteLine("[2] Add Customer");
+            Console.WriteLine("[1] List Customers");
+            Console.WriteLine("[0] Exit");
         }
 
         public MenuOptions YourChoice()
@@ -36,6 +37,9 @@ namespace StoreUI
                     break;
                 case "3":
                     val = MenuOptions.SearchCustomer;
+                    break;
+                case "4":
+                    val = MenuOptions.ViewStoreInv;
                     break;
                 default:
                     Console.WriteLine("Unable todetermine input.");
