@@ -28,4 +28,20 @@ namespace StoreAppData
         /// <returns>True if the Customer was successfully added</returns>
         bool AddCustomer(Customer item);
     }
+
+    public interface IStoreFrontDL
+    {
+        /// <summary>
+        /// Finds a store based upon the name given
+        /// </summary>
+        /// <param name="name">The name of the store to be found</param>
+        /// <returns>The Store object that is being searched for</returns>
+        StoreFront FindStore(string name);
+
+        /// <summary>
+        /// Retrieves a List of all stores.
+        /// </summary>
+        /// <returns>A list containing all of the storefronts</returns>
+        List<StoreFront> RetrieveStoreFronts();
+    }
 }
