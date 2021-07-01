@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace StoreAppData
 {
+    // Consider changing to Singleton instead of making every function static
     public class CustomerDL// : ICustomerDL
     {
         private const string _customerFilePath = "../StoreAppData/StoredData/Customers.json";
