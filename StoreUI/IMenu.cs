@@ -10,6 +10,9 @@ namespace StoreUI
         ListCustomerMenu,
         SearchCustomer,
         ViewStoreInv,
+        PlaceOrder,
+        ViewOrderHistory,
+        ReplenishInventory,
         Exit
     }
     public interface IMenu

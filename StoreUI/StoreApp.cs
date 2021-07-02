@@ -14,6 +14,7 @@ namespace P0
             bool stay = true;
             MenuOptions choice = MenuOptions.MainMenu;
             while (stay) {
+                Console.Clear();
                 menu.Menu();
                 choice = menu.YourChoice();
                 switch (choice)
@@ -35,6 +36,9 @@ namespace P0
                         break;
                     case MenuOptions.ViewStoreInv:
                         menu = new ViewStoreInvMenu();
+                        break;
+                    case MenuOptions.ViewOrderHistory:
+                        menu = new ViewOrderMenu();
                         break;
                     default:
                         Console.WriteLine("Could not understand input.");
