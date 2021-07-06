@@ -5,25 +5,39 @@ namespace StoreUI
 {
     class AddCustomerMenu : IMenu
     {
-        public AddCustomerMenu()
-        {
-            
-        }
         public void Menu()
         {
             Console.WriteLine("====Add Customer Menu====");
             Console.WriteLine("Welcome! Please enter the customer's information");
+            Console.WriteLine("[1] Add a customer.");
+            Console.WriteLine("[0] Return to Main Menu.");
         }
 
         public MenuOptions YourChoice()
         {
-            string info = "";
-            Console.WriteLine("Enter the customer's name or enter 0 to return to the main menu.");
-            info += Console.ReadLine(); 
-            if (info == "0") {
-                return MenuOptions.MainMenu;
+            string info = Console.ReadLine();
+            switch (info)
+            {
+                case "0":
+                    return MenuOptions.MainMenu;
+                case "1":
+                    AddCustomer();
+                    break;
+                default:
+                    Console.WriteLine("Your input could not be understood.");
+                    break;
             }
-            string name = info;
+
+            System.Console.WriteLine("Press Enter to return to Main Menu.");
+            Console.ReadLine();
+            
+            return MenuOptions.MainMenu;
+        }
+
+        private void AddCustomer() 
+        {
+            Console.WriteLine("Enter the customer's name.");
+            string name = Console.ReadLine();
             Console.WriteLine("Enter the customer's address.");
             string address = Console.ReadLine(); 
             Console.WriteLine("Enter the customer's email.");
@@ -37,14 +51,10 @@ namespace StoreUI
             }
             else
             {
-                System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.Console.WriteLine("The Customer could not be added.");
-                System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.Console.WriteLine("ERROR: The Customer could not be added.");
+                System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
-            System.Console.WriteLine("Press Enter to return to Main Menu.");
-            Console.ReadLine();
-            
-            return MenuOptions.MainMenu;
         }
     }
 }
