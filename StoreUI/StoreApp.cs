@@ -37,8 +37,14 @@ namespace P0
                     case MenuOptions.ViewStoreInv:
                         menu = new ViewStoreInvMenu();
                         break;
+                    case MenuOptions.ReplenishInventory:
+                        Console.WriteLine("!!!!!!!!Not Implemented!!!!!!!!!");
+                        break;
                     case MenuOptions.ViewOrderHistory:
                         menu = new ViewOrderMenu();
+                        break;
+                    case MenuOptions.PlaceOrder:
+                        Console.WriteLine("!!!!!!!!Not Implemented!!!!!!!!!");
                         break;
                     default:
                         Console.WriteLine("Could not understand input.");

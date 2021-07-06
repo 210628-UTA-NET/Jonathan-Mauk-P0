@@ -13,7 +13,9 @@ namespace StoreUI
         {
             Console.WriteLine("====Main Menu====");
             Console.WriteLine("Welcome! Please make a selection");
-            Console.WriteLine("[5] View Order Inventory");
+            Console.WriteLine("[7] Place Order");
+            Console.WriteLine("[6] View Order Inventory");
+            Console.WriteLine("[5] Replenish Store Inventory");
             Console.WriteLine("[4] View Store Inventory");
             Console.WriteLine("[3] Search Customer");
             Console.WriteLine("[2] Add Customer");
@@ -43,7 +45,13 @@ namespace StoreUI
                     val = MenuOptions.ViewStoreInv;
                     break;
                 case "5":
+                    val = MenuOptions.ReplenishInventory;
+                    break;
+                case "6":
                     val = MenuOptions.ViewOrderHistory;
+                    break;
+                case "7":
+                    val = MenuOptions.PlaceOrder;
                     break;
                 default:
                     Console.WriteLine("Unable todetermine input.");
