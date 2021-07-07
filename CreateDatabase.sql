@@ -18,6 +18,7 @@ CREATE TABLE StoreFront (
 
 CREATE TABLE Product (
     ProductId INT IDENTITY,
+    ProductName VARCHAR(20) NOT NULL,
     ProductPrice DECIMAL(10,2) NOT NULL,
     Description VARCHAR(255),
     Category VARCHAR(20)
