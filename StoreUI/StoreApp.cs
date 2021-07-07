@@ -10,47 +10,17 @@ namespace P0
         static void Main(string[] args)
         {
             IMenu menu = new MainMenu();
-            List<string> customers = new List<string>();
-            bool stay = true;
             MenuOptions choice = MenuOptions.MainMenu;
+            MenuFactory factory = new MenuFactory();
+            bool stay = true;
             while (stay) {
                 Console.Clear();
                 menu.Menu();
                 choice = menu.YourChoice();
-                switch (choice)
-                {
-                    case MenuOptions.Exit:
-                        stay = false;
-                        break;
-                    case MenuOptions.ListCustomerMenu:
-                        menu = new ListCustomerMenu();
-                        break;
-                    case MenuOptions.AddCustomerMenu:
-                        menu = new AddCustomerMenu();
-                        break;
-                    case MenuOptions.MainMenu:
-                        menu = new MainMenu();
-                        break;
-                    case MenuOptions.SearchCustomer:
-                        menu = new CustomerSearchMenu();
-                        break;
-                    case MenuOptions.ViewStoreInv:
-                        menu = new ViewStoreInvMenu();
-                        break;
-                    case MenuOptions.ReplenishInventory:
-                        Console.WriteLine("!!!!!!!!Not Implemented!!!!!!!!!");
-                        break;
-                    case MenuOptions.ViewOrderHistory:
-                        menu = new ViewOrderMenu();
-                        break;
-                    case MenuOptions.PlaceOrder:
-                        Console.WriteLine("!!!!!!!!Not Implemented!!!!!!!!!");
-                        break;
-                    default:
-                        Console.WriteLine("Could not understand input.");
-                        break;
+                menu = factory.GetMenu(choice);
+                if (menu == null) {
+                    stay = false;
                 }
-
             } 
         }
     }
