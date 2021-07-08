@@ -4,9 +4,17 @@ using System.Collections.Generic;
 
 namespace StoreAppData
 {
+    /// <summary>
+    /// Base class for all of the data layer classes.
+    /// Adds the _context variable for getting the database context
+    /// </summary>
     public abstract class Repository
     {
         protected Entities.JMStoreAppContext _context;
+        /// <summary>
+        /// Constructs a data layer class
+        /// </summary>
+        /// <param name="p_context">This should be the context for the database</param>
         public Repository(Entities.JMStoreAppContext p_context) {  }
     }
 
@@ -35,6 +43,9 @@ namespace StoreAppData
         bool AddCustomer(Customer item);
     }
 
+    /// <summary>
+    /// Responsible for accessing the StoreFront table in the database
+    /// </summary>
     public interface IStoreFrontDL
     {
         /// <summary>
@@ -57,6 +68,9 @@ namespace StoreAppData
         List<StoreFront> RetrieveStoreFronts();
     }
 
+    /// <summary>
+    /// Responsible for accessing the Products table in the database
+    /// </summary>
     public interface IProductDL
     {
         /// <summary>
@@ -73,6 +87,9 @@ namespace StoreAppData
         List<Products> RetrieveProducts();
     }
 
+    /// <summary>
+    /// Responsible for accessing the StoreLineItems and the OrderLineItems from the database
+    /// </summary>
     public interface ILineItemDL
     {
         /// <summary>
@@ -88,5 +105,13 @@ namespace StoreAppData
         /// <param name="fkid">The id number of the foreign key</param>
         /// <returns></returns>
         List<LineItems> RetrieveLineItems(int fkid);
+
+        /// <summary>
+        /// Updates a LineItem in the database
+        /// </summary>
+        /// <param name="id">The id of the LineItem being updated</param>
+        /// <param name="addedQuantity">The number being added to the quantity of the LineItem</param>
+        /// <returns>Returns true if the update succeded</returns>
+        bool UpdateLineItem(int id, int addedQuantity);
     }
 }

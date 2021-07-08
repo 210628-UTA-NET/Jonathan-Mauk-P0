@@ -37,5 +37,10 @@ namespace StoreAppData
                 rest => rest.FkId == fkid
             ).ToList();
         }
+
+        public bool UpdateLineItem(int id, int addedQuantity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
