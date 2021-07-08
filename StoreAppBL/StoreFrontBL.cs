@@ -10,8 +10,7 @@ namespace StoreAppBL
 
         public StoreFront FindStore(string name)
         {
-            return null;
-            //return StoreFrontDL._storeFrontDL.FindStore(name);
+            return StoreFrontDL._storeFrontDL.FindStore(name);
         }
 
         public List<StoreFront> RetrieveStores()
