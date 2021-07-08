@@ -43,6 +43,12 @@ namespace StoreAppData
         /// <param name="name">The name of the store to be found</param>
         /// <returns>The Store object that is being searched for</returns>
         StoreFront FindStore(string name);
+        /// <summary>
+        /// Finds a store based upon the id given
+        /// </summary>
+        /// <param name="id">The id of the store to be found</param>
+        /// <returns>The Store object that is being searched for</returns>
+        StoreFront FindStore(int id);
 
         /// <summary>
         /// Retrieves a List of all stores.
