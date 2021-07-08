@@ -5,9 +5,10 @@ namespace StoreModels
 {
     public class Orders
     {
+        public int Id { get; set; }
         public List<LineItems> LineItems { get; set; }
         public StoreFront Location { get; set; }
-        public double TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
 
         public Orders()
         {
