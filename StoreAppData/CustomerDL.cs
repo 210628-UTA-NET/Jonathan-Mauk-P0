@@ -55,9 +55,7 @@ namespace StoreAppData
         {
             try
             {
-                string customersFile = File.ReadAllText(_customerFilePath);
-                List<StoreModels.Customer> customers = JsonSerializer.Deserialize<List<StoreModels.Customer>>(customersFile);
-                foreach (StoreModels.Customer item in customers)
+                foreach (StoreModels.Customer item in RetrieveCustomers())
                 {
                     if (item.Name == name)
                     {
