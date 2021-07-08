@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 namespace StoreAppData
 {
+    public abstract class Repository
+    {
+        protected Entities.JMStoreAppContext _context;
+        public Repository(Entities.JMStoreAppContext p_context) {  }
+    }
+
     /// <summary>
-    /// Responsible for accessing the database
+    /// Responsible for accessing the Customer table of the database
     /// </summary>
     public interface ICustomerDL
     {
@@ -43,5 +49,21 @@ namespace StoreAppData
         /// </summary>
         /// <returns>A list containing all of the storefronts</returns>
         List<StoreFront> RetrieveStoreFronts();
+    }
+
+    public interface IProductDL
+    {
+        /// <summary>
+        /// Finds a Product based upon the id given
+        /// </summary>
+        /// <param name="id">The product id</param>
+        /// <returns>The product that matches the id given</returns>
+        Products FindProduct(int id);
+
+        /// <summary>
+        /// Retrieves a list of all products stored on the database
+        /// </summary>
+        /// <returns>List containing all products stored on the database</returns>
+        List<Products> RetrieveProducts();
     }
 }

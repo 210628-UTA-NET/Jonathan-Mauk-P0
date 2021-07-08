@@ -8,14 +8,13 @@ using System.Linq;
 namespace StoreAppData
 {
     // Consider changing to Singleton instead of making every function static
-    public class CustomerDL : ICustomerDL
+    public class CustomerDL : Repository, ICustomerDL
     {
         private const string _customerFilePath = "../StoreAppData/StoredData/Customers.json";
         // Singleton for CustomerDL
         public static CustomerDL _customerDL = new CustomerDL(new Entities.JMStoreAppContext(DatabaseConnection.GetDatabaseOptions()));
-        private Entities.JMStoreAppContext _context;
 
-        public CustomerDL(Entities.JMStoreAppContext p_context)
+        public CustomerDL(Entities.JMStoreAppContext p_context) : base(p_context)
         {
             _context = p_context;
         }
