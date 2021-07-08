@@ -7,6 +7,7 @@ namespace StoreAppData
 {
     public class ProductDL : Repository, IProductDL
     {
+        public static ProductDL _productDL = new ProductDL(new Entities.JMStoreAppContext(DatabaseConnection.GetDatabaseOptions()));
         public ProductDL(Entities.JMStoreAppContext p_context) : base(p_context)
         {
             _context = p_context;
