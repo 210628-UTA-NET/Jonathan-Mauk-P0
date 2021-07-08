@@ -1,0 +1,41 @@
+using System.Collections.Generic;
+using StoreAppData.Entities;
+using StoreModels;
+using System.Linq;
+
+namespace StoreAppData
+{
+    public class StoreLineItem : Repository, ILineItemDL
+    {
+        public static StoreLineItem _storeLineItem = new StoreLineItem(new Entities.JMStoreAppContext(DatabaseConnection.GetDatabaseOptions()));
+        public StoreLineItem(JMStoreAppContext p_context) : base(p_context)
+        {
+            _context = p_context;
+        }
+
+        public LineItems FindLineItem(int id)
+        {
+            Entities.StoreLineItem storeLineItem = _context.StoreLineItems.Find(id);
+            return new LineItems() {
+                Id = storeLineItem.StoreLineItemId,
+                Product = ProductDL._productDL.FindProduct(storeLineItem.ProductId),
+                Count = storeLineItem.Quantity
+            };
+        }
+
+        public List<LineItems> RetrieveLineItems(int fkid)
+        {
+            return _context.StoreLineItems.Select(
+                rest => new LineItems()
+                {
+                    Id = rest.StoreLineItemId,
+                    Product = ProductDL._productDL.FindProduct(rest.ProductId),
+                    Count = rest.Quantity,
+                    FkId = rest.StoreId
+                }
+            ).ToList().Where(
+                rest => rest.FkId == fkid
+            ).ToList();
+        }
+    }
+}

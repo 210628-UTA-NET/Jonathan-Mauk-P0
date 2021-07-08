@@ -66,4 +66,21 @@ namespace StoreAppData
         /// <returns>List containing all products stored on the database</returns>
         List<Products> RetrieveProducts();
     }
+
+    public interface ILineItemDL
+    {
+        /// <summary>
+        /// Finds a LineItem based upon the id given
+        /// </summary>
+        /// <param name="id">The LineItem id</param>
+        /// <returns>The LineItem that matches the id given</returns>
+        LineItems FindLineItem(int id);
+
+        /// <summary>
+        /// Finds all LineItems belonging to a specified foreign key
+        /// </summary>
+        /// <param name="fkid">The id number of the foreign key</param>
+        /// <returns></returns>
+        List<LineItems> RetrieveLineItems(int fkid);
+    }
 }
