@@ -34,7 +34,7 @@ namespace StoreUI
                     menu = new ViewOrderMenu();
                     break;
                 case MenuOptions.PlaceOrder:
-                    Console.WriteLine("!!!!!!!!Not Implemented!!!!!!!!!");
+                    menu = new PlaceOrderMenu();
                     break;
                 default:
                     menu = new MainMenu();
