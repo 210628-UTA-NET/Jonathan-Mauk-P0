@@ -12,5 +12,10 @@ namespace StoreModels
         {
             
         }
+
+        public override string ToString()
+        {
+            return $"Name: {Product.Name}\t Price: ${Product.Price}\t Quantity: {Count}";
+        }
     }
 }
