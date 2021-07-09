@@ -15,7 +15,7 @@ namespace StoreAppData
 
         public Products FindProduct(int id)
         {
-            Entities.Product eProduct = _context.Products.Find();
+            Entities.Product eProduct = _context.Products.Find(id);
             return new Products(){
                 Id = eProduct.ProductId,
                 Name = eProduct.ProductName,
