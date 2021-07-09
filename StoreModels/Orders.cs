@@ -9,6 +9,7 @@ namespace StoreModels
         public List<LineItems> LineItems { get; set; }
         public StoreFront Location { get; set; }
         public decimal TotalPrice { get; set; }
+        public int CustomerId { get; set; }
 
         public Orders()
         {
