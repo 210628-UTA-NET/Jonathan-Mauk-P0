@@ -114,4 +114,18 @@ namespace StoreAppData
         /// <returns>Returns true if the update succeded</returns>
         bool UpdateLineItem(int id, int addedQuantity);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IOrderDL
+    {
+        List<Orders> FindOrdersByCustomer(int p_customerID);
+
+        List<Orders> FindOrdersByStore(int p_storeID);
+
+        bool PlaceOrder(Orders order);
+
+        Orders FindOrder(int orderID);
+    }
 }
