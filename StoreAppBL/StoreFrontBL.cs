@@ -21,5 +21,25 @@ namespace StoreAppBL
         {
             return StoreFrontDL._storeFrontDL.RetrieveStoreFronts();
         }
+
+        public void FindStoreInventory(int id)
+        {
+            if(StoreLineItem._storeLineItem.FindLineItem(id) == null)
+            {
+                throw new System.Exception();
+            }
+        }
+
+        public bool ReplenishInventory(int p_storeLineItemId, int p_addedQuantity)
+        {
+            if (p_addedQuantity > 0)
+            {
+                return StoreLineItem._storeLineItem.UpdateLineItem(p_storeLineItemId, p_addedQuantity);
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

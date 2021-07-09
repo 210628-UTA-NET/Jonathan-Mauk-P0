@@ -28,7 +28,7 @@ namespace StoreUI
                     menu = new ViewStoreInvMenu();
                     break;
                 case MenuOptions.ReplenishInventory:
-                    Console.WriteLine("!!!!!!!!Not Implemented!!!!!!!!!");
+                    menu = new ReplenishInventoryMenu();
                     break;
                 case MenuOptions.ViewOrderHistory:
                     menu = new ViewOrderMenu();

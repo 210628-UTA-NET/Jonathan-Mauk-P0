@@ -40,7 +40,18 @@ namespace StoreAppData
 
         public bool UpdateLineItem(int id, int addedQuantity)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                Entities.StoreLineItem updatedLineItem = _context.StoreLineItems.Find(id);
+                updatedLineItem.Quantity += addedQuantity;
+                _context.StoreLineItems.Update(updatedLineItem);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
         }
     }
 }
