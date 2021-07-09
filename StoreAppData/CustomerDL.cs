@@ -23,13 +23,6 @@ namespace StoreAppData
             bool val = false;
             try
             {
-                /*string customersFile = File.ReadAllText(_customerFilePath);
-                List<StoreModels.Customer> customers = JsonSerializer.Deserialize<List<StoreModels.Customer>>(customersFile);
-                customers.Add(item);
-                JsonSerializer.Serialize<List<StoreModels.Customer>>(customers);
-                string text = JsonSerializer.Serialize(customers, new JsonSerializerOptions(){WriteIndented = true});
-                File.WriteAllText(_customerFilePath, text);
-                val = true;*/
                 _context.Customers.Add(
                     new Entities.Customer()
                     {
