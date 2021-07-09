@@ -49,7 +49,9 @@ namespace StoreAppData
                         Address = rest.StoreAddress,
                         Inventory = StoreLineItem._storeLineItem.RetrieveLineItems(rest.StoreId)
                     }
-            ).ToList();
+            ).ToList().OrderBy(
+                o => o.Id
+            ).ToList()            ;
         }
     }
 }
