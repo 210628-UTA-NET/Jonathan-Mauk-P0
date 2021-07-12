@@ -17,23 +17,13 @@ namespace StoreAppData
 
         public static StoreFront EntityToModel(Entities.StoreFront eStoreFront)
         {
-            List<LineItems> inventory = new List<LineItems>();
-            List<Orders> orders = new List<Orders>();
-            foreach (Entities.StoreLineItem item in eStoreFront.StoreLineItems)
-            {
-                inventory.Add(StoreLineItem.EntityToModel(item));
-            }
-            foreach (Entities.Order order in eStoreFront.Orders)
-            {
-                orders.Add(OrderDL.EntityToModel(order));
-            }
             return new StoreFront()
             {
                 Id = eStoreFront.StoreId,
                 Name = eStoreFront.StoreName,
                 Address = eStoreFront.StoreAddress,
-                Inventory = inventory,
-                Orders = orders
+                Inventory = StoreLineItem._storeLineItem.RetrieveLineItems(eStoreFront.StoreId),
+                Orders = OrderDL._orderDL.FindOrdersByStore(eStoreFront.StoreId)
             };
         }
 

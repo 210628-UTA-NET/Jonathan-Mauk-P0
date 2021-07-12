@@ -45,11 +45,6 @@ namespace StoreAppData
 
         public static Customer EntityToModel(Entities.Customer eCustomer)
         {
-            List<Orders> orders = new List<Orders>();
-            foreach (Entities.Order order in eCustomer.Orders)
-            {
-                orders.Add(OrderDL.EntityToModel(order));
-            }
             return new Customer()
             {
                 CustomerId = eCustomer.CustomerId,
@@ -57,7 +52,7 @@ namespace StoreAppData
                 Address = eCustomer.CustomerAddress,
                 Email = eCustomer.Email,
                 PhoneNumber = eCustomer.PhoneNumber,
-                Orders = orders
+                Orders = OrderDL._orderDL.FindOrdersByCustomer(eCustomer.CustomerId)
             };
         }
 

@@ -18,7 +18,7 @@ namespace StoreAppData
             return new LineItems(){
                 Id = eLineItem.StoreLineItemId,
                 FkId = eLineItem.StoreId,
-                Product = ProductDL.EntityToModel(eLineItem.Product),
+                Product = ProductDL._productDL.FindProduct(eLineItem.ProductId),
                 Count = eLineItem.Quantity
             };
         }

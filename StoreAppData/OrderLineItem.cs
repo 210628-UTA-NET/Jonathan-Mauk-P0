@@ -60,7 +60,7 @@ namespace StoreAppData
             return new LineItems(){
                 Id = eLineItem.OrderLineItemId,
                 FkId = eLineItem.OrderId,
-                Product = ProductDL.EntityToModel(eLineItem.Product),
+                Product = ProductDL._productDL.FindProduct(eLineItem.ProductId),
                 Count = eLineItem.Quantity
             };
         }

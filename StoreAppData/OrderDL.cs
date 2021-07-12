@@ -15,15 +15,10 @@ namespace StoreAppData
 
         public static Orders EntityToModel(Order eOrder)
         {
-            List<LineItems> lineItems = new List<LineItems>();
-            foreach (Entities.OrderLineItem item in eOrder.OrderLineItems)
-            {
-                lineItems.Add(OrderLineItem.EntityToModel(item));
-            }
             return new Orders()
             {
                 Id = eOrder.OrderId,
-                LineItems = lineItems,
+                LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(eOrder.OrderId),
                 TotalPrice = (decimal)eOrder.TotalPrice,
                 LocationId = eOrder.StoreId,
                 CustomerId = eOrder.CustomerId
