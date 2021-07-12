@@ -10,7 +10,6 @@ namespace StoreAppData
     // Consider changing to Singleton instead of making every function static
     public class CustomerDL : Repository, ICustomerDL
     {
-        private const string _customerFilePath = "../StoreAppData/StoredData/Customers.json";
         // Singleton for CustomerDL
         public static CustomerDL _customerDL = new CustomerDL(new Entities.JMStoreAppContext(DatabaseConnection.GetDatabaseOptions()));
 
@@ -43,6 +42,11 @@ namespace StoreAppData
             return val;
         }
 
+        /// <summary>
+        /// Converts an Entities.Customer class to a StoreModels.Customer class
+        /// </summary>
+        /// <param name="eCustomer">The Entities.Customer to be converted</param>
+        /// <returns>A converted StoreModels.Customer class</returns>
         public static Customer EntityToModel(Entities.Customer eCustomer)
         {
             return new Customer()

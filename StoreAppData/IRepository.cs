@@ -110,29 +110,44 @@ namespace StoreAppData
         /// Finds all LineItems belonging to a specified foreign key
         /// </summary>
         /// <param name="fkid">The id number of the foreign key</param>
-        /// <returns></returns>
+        /// <returns>The List of LineItems that correspond to the given foreign key</returns>
         List<LineItems> RetrieveLineItems(int fkid);
-
-        /// <summary>
-        /// Updates a LineItem in the database
-        /// </summary>
-        /// <param name="id">The id of the LineItem being updated</param>
-        /// <param name="addedQuantity">The number being added to the quantity of the LineItem</param>
-        /// <returns>Returns true if the update succeded</returns>
-        bool UpdateLineItem(int id, int addedQuantity);
     }
 
     /// <summary>
-    /// 
+    /// Responsible for accessing the Order Table of the database
     /// </summary>
     public interface IOrderDL
     {
+        /// <summary>
+        /// Retrieves all Orders belonging to a specified Customer.
+        /// </summary>
+        /// <param name="p_customerID">The Customer Id that all of the orders belong to</param>
+        /// <returns>A list of orders belonging to the customer that matches p_customerID</returns>
         List<Orders> FindOrdersByCustomer(int p_customerID);
 
+        /// <summary>
+        /// Retrieves all Orders belonging to a specified store
+        /// </summary>
+        /// <param name="p_storeID">The id of the store that all of the orders belong to</param>
+        /// <returns>A list of orders that belong to the specified store</returns>
         List<Orders> FindOrdersByStore(int p_storeID);
 
+        /// <summary>
+        /// Adds an order to the database and updates the store line items to reflect
+        /// items being ordered
+        /// </summary>
+        /// <param name="order">The order that is to be added to the database</param>
+        /// <param name="p_Changed">A list of LineItems that contain the id of the StoreLineItem being ordered
+        /// and the quantity of items being ordered from that StoreLineItem.</param>
+        /// <returns>True if the order was added to the database.</returns>
         bool PlaceOrder(Orders order, List<LineItems> p_Changed);
 
+        /// <summary>
+        /// Finds an order
+        /// </summary>
+        /// <param name="orderID">The id of the order to be found</param>
+        /// <returns>The Order object being searched for</returns>
         Orders FindOrder(int orderID);
     }
 }

@@ -15,6 +15,11 @@ namespace StoreAppData
             _context = p_context;
         }
 
+        /// <summary>
+        /// Converts an Entities.StoreFront class to a StoreModels.StoreFront class
+        /// </summary>
+        /// <param name="eStoreFront">The Entities.StoreFront to be converted</param>
+        /// <returns>A converted StoreModels.StoreFront class</returns>
         public static StoreFront EntityToModel(Entities.StoreFront eStoreFront)
         {
             return new StoreFront()

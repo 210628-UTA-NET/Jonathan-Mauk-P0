@@ -7,12 +7,18 @@ namespace StoreAppData
 {
     public class StoreLineItem : Repository, ILineItemDL
     {
+        // The Singleton for the StoreLineItem class
         public static StoreLineItem _storeLineItem = new StoreLineItem(new Entities.JMStoreAppContext(DatabaseConnection.GetDatabaseOptions()));
         public StoreLineItem(JMStoreAppContext p_context) : base(p_context)
         {
             _context = p_context;
         }
 
+        /// <summary>
+        /// Converts an Entities.StoreLineItem class to a StoreModels.LineItems class
+        /// </summary>
+        /// <param name="eLineItem">The Entities.StoreLineItem to be converted</param>
+        /// <returns>A converted StoreModels.LineItems class</returns>
         public static LineItems EntityToModel(Entities.StoreLineItem eLineItem)
         {
             return new LineItems(){
@@ -38,6 +44,12 @@ namespace StoreAppData
             ).ToList();
         }
 
+        /// <summary>
+        /// Updates a LineItem in the database
+        /// </summary>
+        /// <param name="id">The id of the LineItem being updated</param>
+        /// <param name="addedQuantity">The number being added to the quantity of the LineItem</param>
+        /// <returns>Returns true if the update succeded</returns>
         public bool UpdateLineItem(int id, int addedQuantity)
         {
             try
@@ -54,6 +66,13 @@ namespace StoreAppData
             }
         }
 
+        /// <summary>
+        /// Same functionality as UpdateLineItem except that it does not save changes to the context.
+        /// StoreLineItemSave() will need to be called after calling this function
+        /// </summary>
+        /// <param name="id">The id of the LineItem being updated</param>
+        /// <param name="addedQuantity">The number being added to the quantity of the LineItem</param>
+        /// <returns></returns>
         public bool UpdateLineItemNoSave(int id, int addedQuantity)
         {
             try
@@ -69,6 +88,9 @@ namespace StoreAppData
             }
         }
 
+        /// <summary>
+        /// Saves any changes to the StoreLineItemDL._context
+        /// </summary>
         public void StoreLineItemSave(){
             _context.SaveChanges();
         }

@@ -7,6 +7,7 @@ namespace StoreAppData
 {
     public class OrderLineItem : Repository, ILineItemDL
     {
+        // The Singleton for the OrderLineItem class
         public static OrderLineItem _orderLineItem = new OrderLineItem(new Entities.JMStoreAppContext(DatabaseConnection.GetDatabaseOptions()));
         public OrderLineItem(JMStoreAppContext p_context) : base(p_context)
         {
@@ -28,11 +29,12 @@ namespace StoreAppData
             ).ToList();
         }
 
-        public bool UpdateLineItem(int id, int addedQuantity)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        /// <summary>
+        /// Adds an OrderLineItem to the database
+        /// </summary>
+        /// <param name="lineItem">The Lineitem to be added</param>
+        /// <param name="order">The Order that the OrderLineItem corresponds to</param>
+        /// <returns>True if the OrderLineItem was successfully added to the database</returns>
         public bool AddLineItem(LineItems lineItem, Entities.Order order)
         {
             bool val = false;
@@ -43,7 +45,7 @@ namespace StoreAppData
                     {
                         ProductId = lineItem.Product.Id,
                         Quantity = lineItem.Count,
-                        Order = order
+                        Order = order   // This allows for the OrderLineItem to get the primary key of the Order and use it as a foreign key
                     }
                 );
                 val = true;
@@ -55,6 +57,11 @@ namespace StoreAppData
             return val;
         }
 
+        /// <summary>
+        /// Converts an Entities.OrderLineItem class to a StoreModels.LineItems class
+        /// </summary>
+        /// <param name="eLineItem">The Entities.OrderLineItem to be converted</param>
+        /// <returns>A converted StoreModels.LineItems class</returns>
         public static LineItems EntityToModel(Entities.OrderLineItem eLineItem)
         {
             return new LineItems(){
