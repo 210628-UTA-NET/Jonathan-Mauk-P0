@@ -7,7 +7,6 @@ namespace StoreModels
     {
         public int Id { get; set; }
         public List<LineItems> LineItems { get; set; }
-        //public StoreFront Location { get; set; }
         public decimal TotalPrice { get; set; }
         public int LocationId { get; set; }
         public int CustomerId { get; set; }
