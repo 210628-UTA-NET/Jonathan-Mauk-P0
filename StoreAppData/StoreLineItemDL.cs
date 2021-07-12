@@ -53,5 +53,24 @@ namespace StoreAppData
                 return false;
             }
         }
+
+        public bool UpdateLineItemNoSave(int id, int addedQuantity)
+        {
+            try
+            {
+                Entities.StoreLineItem updatedLineItem = _context.StoreLineItems.Find(id);
+                updatedLineItem.Quantity += addedQuantity;
+                _context.StoreLineItems.Update(updatedLineItem);
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        }
+
+        public void StoreLineItemSave(){
+            _context.SaveChanges();
+        }
     }
 }

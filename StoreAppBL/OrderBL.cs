@@ -9,6 +9,7 @@ namespace StoreAppBL
     {
         public Orders CurrentOrder { get; set; }
         public StoreFront CurrentStore { get; set; }
+        private List<LineItems> _changedStoreLineItems = new List<LineItems>();
         public OrderBL()
         {
             CurrentOrder = new Orders();
@@ -28,21 +29,53 @@ namespace StoreAppBL
         public bool AddOrderItem(int p_id, int num)
         {
             LineItems storeLineItem = StoreLineItem._storeLineItem.FindLineItem(p_id);
+            LineItems orderLineItem = null;
+            bool val = false;
+
+            foreach (LineItems item in CurrentOrder.LineItems)
+            {
+                if (item.Product.Id == storeLineItem.Product.Id)
+                {
+                    orderLineItem = item;
+                }
+            }
             if(num > storeLineItem.Count)
             {
-                return false;
+                val = false;
+            }
+            else if (orderLineItem != null)
+            {
+                if (orderLineItem.Count + num > storeLineItem.Count)
+                {
+                    val = false;
+                }
+                else
+                {
+                    orderLineItem.Count += num;
+                    CurrentOrder.TotalPrice += orderLineItem.Product.Price * num;
+                    val = true;
+                }
             }
             else
             {
-                LineItems orderLineItem = new LineItems()
+                orderLineItem = new LineItems()
                 {
                     Product = storeLineItem.Product,
                     Count = num
                 };
                 CurrentOrder.LineItems.Add(orderLineItem);
                 CurrentOrder.TotalPrice += orderLineItem.Product.Price * num;
-                return true;
+                val = true;
             }
+
+            if (val)
+            {
+                _changedStoreLineItems.Add(new LineItems(){
+                    Id = p_id,
+                    Count = num
+                });
+            }
+            return val;
         }
 
         public void IsChoice(int choice)
@@ -63,7 +96,7 @@ namespace StoreAppBL
             {
                 return false;
             }
-            return OrderDL._orderDL.PlaceOrder(CurrentOrder);
+            return OrderDL._orderDL.PlaceOrder(CurrentOrder, _changedStoreLineItems);
         }
     }
 }

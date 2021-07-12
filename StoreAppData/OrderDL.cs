@@ -49,11 +49,15 @@ namespace StoreAppData
             ).ToList();
         }
 
-        public bool PlaceOrder(Orders order)
+        public bool PlaceOrder(Orders order, List<LineItems> p_changedLineItems)
         {
             bool val = false;
             try
             {
+                foreach (LineItems item in p_changedLineItems)
+                {
+                    StoreLineItem._storeLineItem.UpdateLineItemNoSave(item.Id, -item.Count);
+                }
                 Entities.Order newOrder = new Entities.Order()
                     {
                         TotalPrice = order.TotalPrice,
@@ -64,9 +68,9 @@ namespace StoreAppData
                 foreach (LineItems item in order.LineItems)
                 {
                     OrderLineItem._orderLineItem.AddLineItem(item, newOrder);
-                    StoreLineItem._storeLineItem.UpdateLineItem(item.Id, -item.Count);
                 }
                 _context.SaveChanges();
+                StoreLineItem._storeLineItem.StoreLineItemSave(); //Makes sure that the Store line items are updated
                 val = true;
             }
             catch (System.Exception)

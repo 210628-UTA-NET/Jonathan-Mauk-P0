@@ -124,7 +124,7 @@ namespace StoreAppData
 
         List<Orders> FindOrdersByStore(int p_storeID);
 
-        bool PlaceOrder(Orders order);
+        bool PlaceOrder(Orders order, List<LineItems> p_Changed);
 
         Orders FindOrder(int orderID);
     }
