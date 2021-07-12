@@ -12,10 +12,8 @@ namespace StoreAppBL
         {
             CurrentOrder = new Orders();
         }
-        public Orders PlaceOrder()
-        {
-            return null;
-        }
+
+        //public List<Orders> GetOrdersByCustomer() 
 
         public void BeginOrder(Customer p_customer, StoreFront p_storeFront)
         {
