@@ -18,7 +18,7 @@ namespace StoreAppBL
 
         public void BeginOrder(Customer p_customer, StoreFront p_storeFront)
         {
-            CurrentOrder.LocationID = p_storeFront.Id;
+            CurrentOrder.LocationId = p_storeFront.Id;
             CurrentOrder.TotalPrice = 0;
             CurrentOrder.CustomerId = p_customer.CustomerId;
             CurrentOrder.LineItems = new List<LineItems>();
