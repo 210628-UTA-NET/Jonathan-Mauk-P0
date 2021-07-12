@@ -15,17 +15,47 @@ namespace StoreAppData
 
         public Orders FindOrder(int orderID)
         {
-            throw new System.NotImplementedException();
+            Entities.Order order = _context.Orders.Find(orderID);
+            return new Orders()
+            {
+                Id = order.OrderId,
+                TotalPrice = (decimal)order.TotalPrice,
+                CustomerId = order.CustomerId,
+                //Location = StoreFrontDL._storeFrontDL.FindStore(order.StoreId),
+                LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(order.OrderId)
+            };
         }
 
         public List<Orders> FindOrdersByCustomer(int p_customerID)
         {
-            throw new System.NotImplementedException();
+            return _context.Orders.Select(
+                rest => new Orders()
+                {
+                    Id = rest.OrderId,
+                    TotalPrice = (decimal)rest.TotalPrice,
+                    CustomerId = rest.CustomerId,
+                    Location = StoreFrontDL._storeFrontDL.FindStore(rest.StoreId),
+                    LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(rest.OrderId)
+                }
+            ).ToList().Where(
+                rest => rest.CustomerId == p_customerID
+            ).ToList();
         }
 
         public List<Orders> FindOrdersByStore(int p_storeID)
         {
-            throw new System.NotImplementedException();
+            return _context.Orders.Select(
+                rest => new Orders()
+                {
+                    Id = rest.OrderId,
+                    TotalPrice = (decimal)rest.TotalPrice,
+                    CustomerId = rest.CustomerId,
+                    Location = StoreFrontDL._storeFrontDL.FindStore(rest.StoreId),
+                    LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(rest.OrderId)
+                }
+            ).ToList().Where(
+                rest => rest.Location.Id == p_storeID
+            ).ToList();
         }
 
         public bool PlaceOrder(Orders order)
@@ -43,6 +73,7 @@ namespace StoreAppData
                 foreach (LineItems item in order.LineItems)
                 {
                     OrderLineItem._orderLineItem.AddLineItem(item, newOrder);
+                    StoreLineItem._storeLineItem.UpdateLineItem(order.Location.Id, -item.Count);
                 }
                 _context.SaveChanges();
                 val = true;
