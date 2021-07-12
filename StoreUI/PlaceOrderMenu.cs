@@ -128,8 +128,8 @@ namespace StoreUI
             bool val = false;
             Console.Clear();
             Console.WriteLine("===== Current Order =====");
-            Console.WriteLine("Store Name:    " + p_order.CurrentOrder.Location.Name);
-            Console.WriteLine("Store Address: " + p_order.CurrentOrder.Location.Address);
+            Console.WriteLine("Store Name:    " + p_order.CurrentStore.Name);
+            Console.WriteLine("Store Address: " + p_order.CurrentStore.Address);
             Console.WriteLine("Total Price: $" + p_order.CurrentOrder.TotalPrice);
             Console.WriteLine("Cart:");
             foreach (LineItems item in p_order.CurrentOrder.LineItems)
@@ -157,9 +157,9 @@ namespace StoreUI
 
         public void ShowInventory(OrderBL p_order)
         {
-            Console.WriteLine($"===== {p_order.CurrentOrder.Location.Name} Inventory =====");
+            Console.WriteLine($"===== {p_order.CurrentStore.Name} Inventory =====");
             Console.WriteLine($"Please choose a product to order.");
-            foreach (LineItems item in p_order.CurrentOrder.Location.Inventory)
+            foreach (LineItems item in p_order.CurrentStore.Inventory)
             {
                 Console.WriteLine($"[{item.Id}] " + item.ToString());
             }

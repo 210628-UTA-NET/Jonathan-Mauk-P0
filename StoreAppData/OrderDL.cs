@@ -13,6 +13,11 @@ namespace StoreAppData
             _context = p_context;
         }
 
+        public Orders EntityToModel(Order eOrder)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Orders FindOrder(int orderID)
         {
             Entities.Order order = _context.Orders.Find(orderID);
@@ -34,7 +39,7 @@ namespace StoreAppData
                     Id = rest.OrderId,
                     TotalPrice = (decimal)rest.TotalPrice,
                     CustomerId = rest.CustomerId,
-                    Location = StoreFrontDL._storeFrontDL.FindStore(rest.StoreId),
+                    LocationId = rest.StoreId,
                     LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(rest.OrderId)
                 }
             ).ToList().Where(
@@ -50,11 +55,11 @@ namespace StoreAppData
                     Id = rest.OrderId,
                     TotalPrice = (decimal)rest.TotalPrice,
                     CustomerId = rest.CustomerId,
-                    Location = StoreFrontDL._storeFrontDL.FindStore(rest.StoreId),
+                    LocationId = rest.StoreId,
                     LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(rest.OrderId)
                 }
             ).ToList().Where(
-                rest => rest.Location.Id == p_storeID
+                rest => rest.LocationId == p_storeID
             ).ToList();
         }
 
@@ -66,14 +71,14 @@ namespace StoreAppData
                 Entities.Order newOrder = new Entities.Order()
                     {
                         TotalPrice = order.TotalPrice,
-                        StoreId = order.Location.Id,
+                        StoreId = order.LocationId,
                         CustomerId = order.CustomerId
                     };
                 _context.Orders.Add(newOrder);
                 foreach (LineItems item in order.LineItems)
                 {
                     OrderLineItem._orderLineItem.AddLineItem(item, newOrder);
-                    StoreLineItem._storeLineItem.UpdateLineItem(order.Location.Id, -item.Count);
+                    StoreLineItem._storeLineItem.UpdateLineItem(order.LocationId, -item.Count);
                 }
                 _context.SaveChanges();
                 val = true;

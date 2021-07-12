@@ -8,6 +8,7 @@ namespace StoreAppBL
     public class OrderBL
     {
         public Orders CurrentOrder { get; set; }
+        public StoreFront CurrentStore { get; set; }
         public OrderBL()
         {
             CurrentOrder = new Orders();
@@ -17,10 +18,11 @@ namespace StoreAppBL
 
         public void BeginOrder(Customer p_customer, StoreFront p_storeFront)
         {
-            CurrentOrder.Location = p_storeFront;
+            CurrentOrder.LocationID = p_storeFront.Id;
             CurrentOrder.TotalPrice = 0;
             CurrentOrder.CustomerId = p_customer.CustomerId;
             CurrentOrder.LineItems = new List<LineItems>();
+            CurrentStore = p_storeFront;
         }
 
         public bool AddOrderItem(int p_id, int num)
@@ -45,7 +47,7 @@ namespace StoreAppBL
 
         public void IsChoice(int choice)
         {
-            foreach (LineItems item in CurrentOrder.Location.Inventory)
+            foreach (LineItems item in CurrentStore.Inventory)
             {
                 if (item.Id == choice)
                 {
