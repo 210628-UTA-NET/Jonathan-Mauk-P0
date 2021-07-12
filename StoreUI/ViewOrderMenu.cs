@@ -34,7 +34,7 @@ namespace StoreUI
                         {
                             foreach (Orders order in store.Orders)
                             {
-                                Console.WriteLine(order.ToString());
+                                Console.WriteLine($"[{order.Id}] Customer Id: {order.CustomerId} Total Price: ${order.TotalPrice}");
                             }
                         }
                         else
@@ -59,7 +59,8 @@ namespace StoreUI
                         {
                             foreach (Orders order in customer.Orders)
                             {
-                                Console.WriteLine(order.ToString());
+                                StoreFront orderStore = StoreFrontBL._storeFrontBL.FindStore(order.LocationId);
+                                Console.WriteLine($"[{order.Id}] Store Name: {orderStore.Name} Total Price: ${order.TotalPrice}");
                             }
                         }
                         else
