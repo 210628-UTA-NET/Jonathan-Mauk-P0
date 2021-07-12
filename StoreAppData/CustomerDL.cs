@@ -75,6 +75,11 @@ namespace StoreAppData
             }
         }
 
+        public StoreModels.Customer FindCustomer(int id)
+        {
+            return EntityToModel(_context.Customers.Find(id));
+        }
+
         public List<StoreModels.Customer> RetrieveCustomers()
         {
             return _context.Customers.Select(

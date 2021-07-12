@@ -18,6 +18,11 @@ namespace StoreAppBL
             return CustomerDL._customerDL.FindCustomer(name);
         }
 
+        public static Customer SearchCustomer(int id)
+        {
+            return CustomerDL._customerDL.FindCustomer(id);
+        }
+
         public static List<Customer> ListCustomers()
         {
             return CustomerDL._customerDL.RetrieveCustomers();

@@ -30,6 +30,13 @@ namespace StoreAppData
         Customer FindCustomer(string name);
 
         /// <summary>
+        /// Finds a customer from the database
+        /// </summary>
+        /// <param name="id">The id of the customer</param>
+        /// <returns>The Customer being searched for</returns>
+        Customer FindCustomer(int id);
+
+        /// <summary>
         /// Retrieves all Customers from the database
         /// </summary>
         /// <returns>A list of all Customers in the database</returns>
