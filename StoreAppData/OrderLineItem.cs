@@ -15,24 +15,14 @@ namespace StoreAppData
 
         public LineItems FindLineItem(int id)
         {
-            Entities.OrderLineItem OrderLineItem = _context.OrderLineItems.Find(id);
-            return new LineItems() {
-                Id = OrderLineItem.OrderLineItemId,
-                Product = ProductDL._productDL.FindProduct(OrderLineItem.ProductId),
-                Count = OrderLineItem.Quantity
-            };
+            Entities.OrderLineItem orderLineItem = _context.OrderLineItems.Find(id);
+            return EntityToModel(orderLineItem);
         }
 
         public List<LineItems> RetrieveLineItems(int fkid)
         {
             return _context.OrderLineItems.Select(
-                rest => new LineItems()
-                {
-                    Id = rest.OrderLineItemId,
-                    Product = ProductDL._productDL.FindProduct(rest.ProductId),
-                    Count = rest.Quantity,
-                    FkId = rest.OrderId
-                }
+                rest => EntityToModel(rest)
             ).ToList().Where(
                 rest => rest.FkId == fkid
             ).ToList();
@@ -63,6 +53,16 @@ namespace StoreAppData
                 val = false;
             }
             return val;
+        }
+
+        public static LineItems EntityToModel(Entities.OrderLineItem eLineItem)
+        {
+            return new LineItems(){
+                Id = eLineItem.OrderLineItemId,
+                FkId = eLineItem.OrderId,
+                Product = ProductDL.EntityToModel(eLineItem.Product),
+                Count = eLineItem.Quantity
+            };
         }
     }
 }

@@ -13,35 +13,33 @@ namespace StoreAppData
             _context = p_context;
         }
 
-        public Orders EntityToModel(Order eOrder)
+        public static Orders EntityToModel(Order eOrder)
         {
-            throw new System.NotImplementedException();
+            List<LineItems> lineItems = new List<LineItems>();
+            foreach (Entities.OrderLineItem item in eOrder.OrderLineItems)
+            {
+                lineItems.Add(OrderLineItem.EntityToModel(item));
+            }
+            return new Orders()
+            {
+                Id = eOrder.OrderId,
+                LineItems = lineItems,
+                TotalPrice = (decimal)eOrder.TotalPrice,
+                LocationId = eOrder.StoreId,
+                CustomerId = eOrder.CustomerId
+            };
         }
 
         public Orders FindOrder(int orderID)
         {
             Entities.Order order = _context.Orders.Find(orderID);
-            return new Orders()
-            {
-                Id = order.OrderId,
-                TotalPrice = (decimal)order.TotalPrice,
-                CustomerId = order.CustomerId,
-                //Location = StoreFrontDL._storeFrontDL.FindStore(order.StoreId),
-                LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(order.OrderId)
-            };
+            return EntityToModel(order);
         }
 
         public List<Orders> FindOrdersByCustomer(int p_customerID)
         {
             return _context.Orders.Select(
-                rest => new Orders()
-                {
-                    Id = rest.OrderId,
-                    TotalPrice = (decimal)rest.TotalPrice,
-                    CustomerId = rest.CustomerId,
-                    LocationId = rest.StoreId,
-                    LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(rest.OrderId)
-                }
+                rest => EntityToModel(rest)
             ).ToList().Where(
                 rest => rest.CustomerId == p_customerID
             ).ToList();
@@ -50,14 +48,7 @@ namespace StoreAppData
         public List<Orders> FindOrdersByStore(int p_storeID)
         {
             return _context.Orders.Select(
-                rest => new Orders()
-                {
-                    Id = rest.OrderId,
-                    TotalPrice = (decimal)rest.TotalPrice,
-                    CustomerId = rest.CustomerId,
-                    LocationId = rest.StoreId,
-                    LineItems = OrderLineItem._orderLineItem.RetrieveLineItems(rest.OrderId)
-                }
+                rest => EntityToModel(rest)
             ).ToList().Where(
                 rest => rest.LocationId == p_storeID
             ).ToList();

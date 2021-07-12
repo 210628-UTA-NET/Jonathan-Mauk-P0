@@ -43,6 +43,24 @@ namespace StoreAppData
             return val;
         }
 
+        public static Customer EntityToModel(Entities.Customer eCustomer)
+        {
+            List<Orders> orders = new List<Orders>();
+            foreach (Entities.Order order in eCustomer.Orders)
+            {
+                orders.Add(OrderDL.EntityToModel(order));
+            }
+            return new Customer()
+            {
+                CustomerId = eCustomer.CustomerId,
+                Name = eCustomer.CustomerName,
+                Address = eCustomer.CustomerAddress,
+                Email = eCustomer.Email,
+                PhoneNumber = eCustomer.PhoneNumber,
+                Orders = orders
+            };
+        }
+
         public StoreModels.Customer FindCustomer(string name)
         {
             try
@@ -64,17 +82,8 @@ namespace StoreAppData
 
         public List<StoreModels.Customer> RetrieveCustomers()
         {
-            //Method Syntax way
             return _context.Customers.Select(
-                rest => 
-                    new Customer()
-                    {
-                        CustomerId = rest.CustomerId,
-                        Name = rest.CustomerName,
-                        Address = rest.CustomerAddress,
-                        Email = rest.Email,
-                        PhoneNumber = rest.PhoneNumber
-                    }
+                rest => EntityToModel(rest)
             ).ToList();
         }
     }

@@ -13,26 +13,26 @@ namespace StoreAppData
             _context = p_context;
         }
 
+        public static LineItems EntityToModel(Entities.StoreLineItem eLineItem)
+        {
+            return new LineItems(){
+                Id = eLineItem.StoreLineItemId,
+                FkId = eLineItem.StoreId,
+                Product = ProductDL.EntityToModel(eLineItem.Product),
+                Count = eLineItem.Quantity
+            };
+        }
+
         public LineItems FindLineItem(int id)
         {
             Entities.StoreLineItem storeLineItem = _context.StoreLineItems.Find(id);
-            return new LineItems() {
-                Id = storeLineItem.StoreLineItemId,
-                Product = ProductDL._productDL.FindProduct(storeLineItem.ProductId),
-                Count = storeLineItem.Quantity
-            };
+            return EntityToModel(storeLineItem);
         }
 
         public List<LineItems> RetrieveLineItems(int fkid)
         {
             return _context.StoreLineItems.Select(
-                rest => new LineItems()
-                {
-                    Id = rest.StoreLineItemId,
-                    Product = ProductDL._productDL.FindProduct(rest.ProductId),
-                    Count = rest.Quantity,
-                    FkId = rest.StoreId
-                }
+                rest => EntityToModel(rest)
             ).ToList().Where(
                 rest => rest.FkId == fkid
             ).ToList();

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using StoreModels;
 using System.Linq;
+using StoreAppData.Entities;
 
 namespace StoreAppData
 {
@@ -12,9 +13,8 @@ namespace StoreAppData
             _context = p_context;
         }
 
-        public Products FindProduct(int id)
+        public static Products EntityToModel(Product eProduct)
         {
-            Entities.Product eProduct = _context.Products.Find(id);
             return new Products(){
                 Id = eProduct.ProductId,
                 Name = eProduct.ProductName,
@@ -24,18 +24,16 @@ namespace StoreAppData
             };
         }
 
+        public Products FindProduct(int id)
+        {
+            Entities.Product eProduct = _context.Products.Find(id);
+            return EntityToModel(eProduct);
+        }
+
         public List<Products> RetrieveProducts()
         {
             return _context.Products.Select(
-                rest => 
-                    new Products()
-                    {
-                        Id = rest.ProductId,
-                        Name = rest.ProductName,
-                        Price = rest.ProductPrice,
-                        Description = rest.Description,
-                        Category = rest.Category
-                    }
+                rest => EntityToModel(rest)
             ).ToList();
         }
     }
