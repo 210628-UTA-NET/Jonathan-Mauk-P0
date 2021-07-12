@@ -59,6 +59,10 @@ namespace StoreAppBL
 
         public bool FinalizeOrder()
         {
+            if (CurrentOrder.TotalPrice <= 0)
+            {
+                return false;
+            }
             return OrderDL._orderDL.PlaceOrder(CurrentOrder);
         }
     }
