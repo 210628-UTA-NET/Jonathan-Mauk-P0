@@ -64,7 +64,7 @@ namespace StoreAppData
                 foreach (LineItems item in order.LineItems)
                 {
                     OrderLineItem._orderLineItem.AddLineItem(item, newOrder);
-                    StoreLineItem._storeLineItem.UpdateLineItem(order.LocationId, -item.Count);
+                    StoreLineItem._storeLineItem.UpdateLineItem(item.Id, -item.Count);
                 }
                 _context.SaveChanges();
                 val = true;
