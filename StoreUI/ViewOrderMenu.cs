@@ -1,6 +1,7 @@
 using System;
 using StoreModels;
 using StoreAppBL;
+using System.Collections.Generic;
 
 namespace StoreUI
 {
@@ -30,11 +31,16 @@ namespace StoreUI
                     StoreFront store = StoreFrontBL._storeFrontBL.FindStore(name);
                     if (store != null)
                     {
-                        if (store.Orders != null)
+                        if (store.Orders.Count != 0)
                         {
-                            foreach (Orders order in store.Orders)
+                            string repeat = "val";
+                            while (repeat != "")
                             {
-                                Console.WriteLine($"[{order.Id}] Customer Id: {order.CustomerId} Total Price: ${order.TotalPrice}");
+                                foreach (Orders order in store.Orders)
+                                {
+                                    Console.WriteLine($"[{order.Id}] Customer Id: {order.CustomerId} Total Price: ${order.TotalPrice}");
+                                }
+                                repeat = PickOrder();
                             }
                         }
                         else
@@ -53,12 +59,16 @@ namespace StoreUI
                     Customer customer = customerSearch.SearchCustomerByName();
                     if (customer != null)
                     {
-                        if (customer.Orders != null)
+                        if (customer.Orders.Count != 0)
                         {
-                            foreach (Orders order in customer.Orders)
+                            string repeat2 = "val";
+                            while (repeat2 != "")
                             {
-                                StoreFront orderStore = StoreFrontBL._storeFrontBL.FindStore(order.LocationId);
-                                Console.WriteLine($"[{order.Id}] Store Name: {orderStore.Name} Total Price: ${order.TotalPrice}");
+                                foreach (Orders order in customer.Orders)
+                                {
+                                    Console.WriteLine($"[{order.Id}] Store Id: {order.LocationId} Total Price: ${order.TotalPrice}");
+                                }
+                                repeat2 = PickOrder();
                             }
                         }
                         else
@@ -79,6 +89,45 @@ namespace StoreUI
                     break;
             }
             return val;
+        }
+
+        private string PickOrder()
+        {
+            Console.WriteLine("Enter the order you wish to view.");
+            Console.WriteLine("Or Enter nothing to continue.");
+            string val = Console.ReadLine();
+            if (val != "")
+            {
+                try
+                {
+                    ShowOrder(OrderBL.FindOrder(Int32.Parse(val)));
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine("Input could not be understood");
+                }
+                EnterToContinue();
+            }
+            return val;
+        }
+
+        private void ShowOrder(Orders orders)
+        {
+            StoreFront store = StoreFrontBL._storeFrontBL.FindStore(orders.LocationId);
+            Customer customer = CustomerBL.SearchCustomer(orders.CustomerId);
+            Console.Clear();
+            Console.WriteLine($"Order Id:      {orders.Id}");
+            Console.WriteLine($"Store Name:    {store.Name}");
+            Console.WriteLine($"Store Address: {store.Address}");
+            Console.WriteLine($"Customer Name: {customer.Name}");
+            Console.WriteLine("----- Items Purchased -----");
+            foreach (LineItems item in orders.LineItems)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("---------------------------");
+            Console.WriteLine($"Total Price: ${orders.TotalPrice}");
+            Console.WriteLine("---------------------------");
         }
     }
 }

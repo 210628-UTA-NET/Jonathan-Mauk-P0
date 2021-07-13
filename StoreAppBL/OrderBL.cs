@@ -25,6 +25,11 @@ namespace StoreAppBL
             CurrentOrder = new Orders();
         }
 
+        public static Orders FindOrder(int id)
+        {
+            return OrderDL._orderDL.FindOrder(id);
+        }
+
         /// <summary>
         /// Begins the process of making an order.
         /// </summary>
