@@ -1,6 +1,5 @@
 using System;
 using StoreModels;
-using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,28 +59,20 @@ namespace StoreAppData
             };
         }
 
-        public StoreModels.Customer FindCustomer(string name)
-        {
-            try
-            {
-                foreach (StoreModels.Customer item in RetrieveCustomers())
-                {
-                    if (item.Name == name)
-                    {
-                        return item;
-                    }
-                }
-                return null;
-            }
-            catch (System.Exception)
-            {
-                return null;
-            }
-        }
-
         public StoreModels.Customer FindCustomer(int id)
         {
             return EntityToModel(_context.Customers.Find(id));
+        }
+
+        public List<StoreModels.Customer> FindCustomers(string name)
+        {
+            return _context.Customers.Select(
+                rest => EntityToModel(rest)
+            ).ToList().Where(
+                rest => rest.Name.Contains(name)
+            ).ToList().OrderBy(
+                o => o.CustomerId
+            ).ToList();
         }
 
         public List<StoreModels.Customer> RetrieveCustomers()

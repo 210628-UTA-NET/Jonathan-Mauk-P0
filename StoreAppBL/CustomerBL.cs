@@ -25,13 +25,13 @@ namespace StoreAppBL
         }
 
         /// <summary>
-        /// Calls the data layer to find a customer given the name of the customer
+        /// Calls the data layer to find a list of customers given the name of the customer.
         /// </summary>
         /// <param name="name">The name of the Customer</param>
-        /// <returns>The Customer found or null if not found</returns>
-        public static Customer SearchCustomer(string name)
+        /// <returns>The List of Customers matching name found or null if none are found</returns>
+        public static List<Customer> SearchForCustomers(string name)
         {
-            return CustomerDL._customerDL.FindCustomer(name);
+            return CustomerDL._customerDL.FindCustomers(name);
         }
 
         /// <summary>

@@ -49,9 +49,11 @@ namespace StoreUI
                     EnterToContinue();
                     break;
                 case "2":
-                    Console.WriteLine("Enter the customer's name.");
+                    /*Console.WriteLine("Enter the customer's name.");
                     name = Console.ReadLine();
-                    Customer customer = CustomerBL.SearchCustomer(name);
+                    Customer customer = CustomerBL.SearchCustomer(name);*/
+                    CustomerSearchMenu customerSearch = new CustomerSearchMenu();
+                    Customer customer = customerSearch.SearchCustomerByName();
                     if (customer != null)
                     {
                         if (customer.Orders != null)

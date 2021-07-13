@@ -36,9 +36,12 @@ namespace StoreUI
 
         private void PlaceOrder()
         {
-            Console.WriteLine("Please enter the Customer's Name.");
+            /*Console.WriteLine("Please enter the Customer's Name.");
             string input = Console.ReadLine();
-            Customer customer = CustomerBL.SearchCustomer(input);
+            Customer customer = CustomerBL.SearchCustomer(input);*/
+            CustomerSearchMenu customerSearch = new CustomerSearchMenu();
+            Customer customer = customerSearch.SearchCustomerByName();
+
             StoreFront store;
             OrderBL _curOrder = new OrderBL();
             if (customer != null)
@@ -106,12 +109,10 @@ namespace StoreUI
                         catch (System.Exception)
                         {
                             Console.WriteLine("Input could not be understood.");
-                            EnterToContinue();
                         }
                         break;
                     default:
                         Console.WriteLine("Input could not be understood.");
-                        EnterToContinue();
                         break;
                 }
                 if (store == null)

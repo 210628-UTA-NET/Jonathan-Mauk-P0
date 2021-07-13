@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using StoreModels;
 using StoreAppBL;
 
@@ -17,44 +18,108 @@ namespace StoreUI
         public MenuOptions YourChoice()
         {
             string info = Console.ReadLine();
-            MenuOptions val;
+            MenuOptions val = MenuOptions.SearchCustomer;
             switch (info)
             {
                 case "0":
                     val = MenuOptions.CustomerOptions;
                     break;
                 case "1":
-                    val = MenuOptions.SearchCustomer;
-                    SearchCustomerByName();
+                    Customer customer = SearchCustomerByName();
+                    if (customer != null)
+                    {
+                        ListCustomer(customer);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Customer could not be found.");        
+                    }
+                    EnterToContinue();
+                    break;
+                case "2":
+                    SearchCustomerById();
                     break;
                 default:
                     Console.WriteLine("Your input could not be understood.");
-                    val = MenuOptions.SearchCustomer;
                     EnterToContinue();
                     break;
             }
             return val;
         }
 
-        private void SearchCustomerByName()
+        public Customer SearchCustomerByName()
         {
             Console.WriteLine("Please enter the customer's name.");
             string name = Console.ReadLine();
-            Customer found = CustomerBL.SearchCustomer(name);
-            if(found == null){
-                System.Console.WriteLine("The Customer you are looking for could not be found.");
-                EnterToContinue();
+            List<Customer> foundCustomers = CustomerBL.SearchForCustomers(name);
+            Customer customer = null;
+            if (foundCustomers.Count == 0)
+            {
+                customer = null;
+            }
+            else if (foundCustomers.Count == 1)
+            {
+                customer = foundCustomers[0];
             }
             else
             {
-                System.Console.WriteLine("==============================");
-                System.Console.WriteLine($"Name: {found.Name}");
-                System.Console.WriteLine($"Address: {found.Address}");
-                System.Console.WriteLine($"Email: {found.Email}");
-                System.Console.WriteLine($"Phone Number: {found.PhoneNumber}");
-                System.Console.WriteLine("==============================");
-                EnterToContinue();
+                customer = ChooseCustomer(foundCustomers);
             }
+            return customer;
+        }
+
+        private void SearchCustomerById()
+        {
+            Console.WriteLine("Enter the Customer's Id.");
+            string id = Console.ReadLine();
+            try
+            {
+                Customer customer = CustomerBL.SearchCustomer(Int32.Parse(id));
+                if (customer != null)
+                {
+                    ListCustomer(customer);
+                }
+                else
+                {
+                    Console.WriteLine("Customer could not be found.");
+                }
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Input could not be understood.");
+            }
+            EnterToContinue();
+        }
+
+        private Customer ChooseCustomer(List<Customer> p_customers)
+        {
+            Customer found = null;
+            while (found == null)
+            {
+                Console.Clear();
+                Console.WriteLine("Choose the correct customer.");
+                foreach (Customer customer in p_customers)
+                {
+                    Console.WriteLine($"[{customer.CustomerId}] Name: {customer.Name}\tEmail: {customer.Email}");
+                }
+                string input = Console.ReadLine();
+                try
+                {
+                    found = CustomerBL.SearchCustomer(Int32.Parse(input));
+                }
+                catch (System.Exception) { }
+            }
+            return found;
+        }
+
+        private void ListCustomer(Customer customer)
+        {
+            System.Console.WriteLine("==============================");
+            System.Console.WriteLine($"Name: {customer.Name}");
+            System.Console.WriteLine($"Address: {customer.Address}");
+            System.Console.WriteLine($"Email: {customer.Email}");
+            System.Console.WriteLine($"Phone Number: {customer.PhoneNumber}");
+            System.Console.WriteLine("==============================");
         }
     }
 }

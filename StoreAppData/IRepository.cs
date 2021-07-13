@@ -24,10 +24,10 @@ namespace StoreAppData
     public interface ICustomerDL
     {
         /// <summary>
-        /// Finds a Customer from the database 
+        /// Finds a list of Customers from the database given a name 
         /// </summary>
-        /// <returns>The Customer being searched for</returns>
-        Customer FindCustomer(string name);
+        /// <returns>A list of customers containing the name being searched for</returns>
+        List<Customer> FindCustomers(string name);
 
         /// <summary>
         /// Finds a customer from the database
