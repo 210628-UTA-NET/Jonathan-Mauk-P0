@@ -10,7 +10,17 @@ namespace StoreUI
         public void Menu()
         {
             Console.Clear();
-            Console.WriteLine("===== Place Order =====");
+            Console.WriteLine(@"
+       ____  __              
+      / __ \/ /___ _________ 
+     / /_/ / / __ `/ ___/ _ \
+    / ____/ / /_/ / /__/  __/
+   /_/_  /_/\__,_/\___/\___/ 
+  / __ \_________/ /__  _____
+ / / / / ___/ __  / _ \/ ___/
+/ /_/ / /  / /_/ /  __/ /    
+\____/_/   \__,_/\___/_/     
+                             ");
             Console.WriteLine("[1] Begin placing order.");
             Console.WriteLine("[0] Return to Order Options.");
         }

@@ -10,7 +10,17 @@ namespace StoreUI
         public void Menu()
         {
             Console.Clear();
-            System.Console.WriteLine("==== Customer Search Menu ====");
+            System.Console.WriteLine(@"
+               _____                      __          
+              / ___/___  ____ ___________/ /_         
+              \__ \/ _ \/ __ `/ ___/ ___/ __ \        
+             ___/ /  __/ /_/ / /  / /__/ / / /        
+   ______   /____/\___/\__,_/_/   \___/_/ /_/         
+  / ____/_  _______/ /_____  ____ ___  ___  __________
+ / /   / / / / ___/ __/ __ \/ __ `__ \/ _ \/ ___/ ___/
+/ /___/ /_/ (__  ) /_/ /_/ / / / / / /  __/ /  (__  ) 
+\____/\__,_/____/\__/\____/_/ /_/ /_/\___/_/  /____/  
+                                                      ");
             System.Console.WriteLine("[2] Search a customer by Id.");
             System.Console.WriteLine("[1] Search a customer by name.");
             System.Console.WriteLine("[0] Return to Customer Options.");

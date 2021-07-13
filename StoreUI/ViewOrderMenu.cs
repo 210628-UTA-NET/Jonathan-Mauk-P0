@@ -10,7 +10,17 @@ namespace StoreUI
         public void Menu()
         {
             Console.Clear();
-            Console.WriteLine("===== View Orders =====");
+            Console.WriteLine(@"
+       _    ___                   
+      | |  / (_)__ _      __      
+      | | / / / _ \ | /| / /      
+      | |/ / /  __/ |/ |/ /       
+   ___|___/_/\___/|__/|__/        
+  / __ \_________/ /__  __________
+ / / / / ___/ __  / _ \/ ___/ ___/
+/ /_/ / /  / /_/ /  __/ /  (__  ) 
+\____/_/   \__,_/\___/_/  /____/  
+                                  ");
             Console.WriteLine("[2] View a customer's order history.");
             Console.WriteLine("[1] View a storefront's order history.");
             Console.WriteLine("[0] Return to Order Options.");

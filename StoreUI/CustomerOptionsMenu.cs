@@ -7,7 +7,17 @@ namespace StoreUI
         public void Menu()
         {
             Console.Clear();
-
+            Console.WriteLine(@"
+                   ___   ________  _________          
+                  /   | / ____/  |/  / ____/          
+                 / /| |/ /   / /|_/ / __/             
+                / ___ / /___/ /  / / /___             
+   ______      /_/  |_\____/_/  /_/_____/             
+  / ____/_  _______/ /_____  ____ ___  ___  __________
+ / /   / / / / ___/ __/ __ \/ __ `__ \/ _ \/ ___/ ___/
+/ /___/ /_/ (__  ) /_/ /_/ / / / / / /  __/ /  (__  ) 
+\____/\__,_/____/\__/\____/_/ /_/ /_/\___/_/  /____/  
+                                                      ");
             Console.WriteLine("[3] Add a Customer");
             Console.WriteLine("[2] Search for a Customer");
             Console.WriteLine("[1] List Customers");

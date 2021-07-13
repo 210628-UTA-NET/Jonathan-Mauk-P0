@@ -10,7 +10,17 @@ namespace StoreUI
         public void Menu()
         {
             Console.Clear();
-            Console.WriteLine("===== Replenish Inventory =====");
+            Console.WriteLine(@"
+       ____             __           _      __    
+      / __ \___  ____  / /__  ____  (_)____/ /_   
+     / /_/ / _ \/ __ \/ / _ \/ __ \/ / ___/ __ \  
+    / _, _/  __/ /_/ / /  __/ / / / (__  ) / / /  
+   /_/_|_|\___/ .___/_/\___/_/_/_/_/____/_/ /_/   
+   /  _/___ _/_/_____  ____  / /_____  _______  __
+   / // __ \ | / / _ \/ __ \/ __/ __ \/ ___/ / / /
+ _/ // / / / |/ /  __/ / / / /_/ /_/ / /  / /_/ / 
+/___/_/ /_/|___/\___/_/ /_/\__/\____/_/   \__, /  
+                                         /____/   ");
             Console.WriteLine("[2] Choose store by name.");
             Console.WriteLine("[1] Browse stores");
             Console.WriteLine("[0] Return to Inventory Options");

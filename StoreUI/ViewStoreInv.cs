@@ -10,7 +10,16 @@ namespace StoreUI
         public void Menu()
         {
             Console.Clear();
-            Console.WriteLine("==== View Store Inventory ====");
+            Console.WriteLine(@"
+               _____ __                           
+              / ___// /_____  ________            
+              \__ \/ __/ __ \/ ___/ _ \           
+    ____     ___/ / /_/ /_/ / /_ /  __/           
+   /  _/___ /____/\__/\____/_/ /_\___/ _______  __
+   / // __ \ | / / _ \/ __ \/ __/ __ \/ ___/ / / /
+ _/ // / / / |/ /  __/ / / / /_/ /_/ / /  / /_/ / 
+/___/_/ /_/|___/\___/_/ /_/\__/\____/_/   \__, /  
+                                         /____/   ");
             Console.WriteLine("Please choose an option.");
             Console.WriteLine("[2] Browse stores");
             Console.WriteLine("[1] Choose store by name");
@@ -63,6 +72,16 @@ namespace StoreUI
         private StoreFront ChooseStore()
         {
             Console.Clear();
+            Console.WriteLine(@"
+               _____ __                           
+              / ___// /_____  ________            
+              \__ \/ __/ __ \/ ___/ _ \           
+    ____     ___/ / /_/ /_/ / /_ /  __/           
+   /  _/___ /____/\__/\____/_/ /_\___/ _______  __
+   / // __ \ | / / _ \/ __ \/ __/ __ \/ ___/ / / /
+ _/ // / / / |/ /  __/ / / / /_/ /_/ / /  / /_/ / 
+/___/_/ /_/|___/\___/_/ /_/\__/\____/_/   \__, /  
+                                         /____/   ");
             StoreFront store = null;
             Console.WriteLine("Please choose the store you wish to view.");
             List<StoreFront> stores = StoreFrontBL._storeFrontBL.RetrieveStores();
@@ -85,6 +104,16 @@ namespace StoreUI
         private void ListStoreInventory(StoreFront store)
         {
             Console.Clear();
+            Console.WriteLine(@"
+               _____ __                           
+              / ___// /_____  ________            
+              \__ \/ __/ __ \/ ___/ _ \           
+    ____     ___/ / /_/ /_/ / /_ /  __/           
+   /  _/___ /____/\__/\____/_/ /_\___/ _______  __
+   / // __ \ | / / _ \/ __ \/ __/ __ \/ ___/ / / /
+ _/ // / / / |/ /  __/ / / / /_/ /_/ / /  / /_/ / 
+/___/_/ /_/|___/\___/_/ /_/\__/\____/_/   \__, /  
+                                         /____/   ");
             Console.WriteLine("========================");
             Console.WriteLine($"Name: {store.Name}");
             Console.WriteLine($"Address: {store.Address}");
