@@ -2,7 +2,7 @@ using System;
 
 namespace StoreUI
 {
-    class CustomerOptionsMenu : IMenu
+    class CustomerOptionsMenu : AMenu, IMenu
     {
         public void Menu()
         {
@@ -32,6 +32,7 @@ namespace StoreUI
                     break;
                 default:
                     Console.WriteLine("Input could not be understood.");
+                    EnterToContinue();
                     break;
             }
             return choice;

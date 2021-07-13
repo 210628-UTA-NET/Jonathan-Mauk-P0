@@ -3,7 +3,7 @@ using StoreAppBL;
 
 namespace StoreUI
 {
-    class AddCustomerMenu : IMenu
+    class AddCustomerMenu : AMenu, IMenu
     {
         public void Menu()
         {
@@ -16,22 +16,22 @@ namespace StoreUI
         public MenuOptions YourChoice()
         {
             string info = Console.ReadLine();
+            MenuOptions menu = MenuOptions.AddCustomerMenu;
             switch (info)
             {
                 case "0":
-                    return MenuOptions.CustomerOptions;
+                    menu = MenuOptions.CustomerOptions;
+                    break;
                 case "1":
                     AddCustomer();
                     break;
                 default:
                     Console.WriteLine("Your input could not be understood.");
+                    EnterToContinue();
                     break;
             }
-
-            System.Console.WriteLine("Press Enter to return to Main Menu.");
-            Console.ReadLine();
             
-            return MenuOptions.MainMenu;
+            return menu;
         }
 
         private void AddCustomer() 
@@ -55,6 +55,7 @@ namespace StoreUI
                 System.Console.WriteLine("ERROR: The Customer could not be added.");
                 System.Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
+            EnterToContinue();
         }
     }
 }

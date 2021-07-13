@@ -4,11 +4,12 @@ using StoreAppBL;
 
 namespace StoreUI
 {
-    class CustomerSearchMenu : IMenu
+    class CustomerSearchMenu : AMenu, IMenu
     {
         public void Menu()
         {
             System.Console.WriteLine("==== Customer Search Menu ====");
+            System.Console.WriteLine("[2] Search a customer by Id.");
             System.Console.WriteLine("[1] Search a customer by name.");
             System.Console.WriteLine("[0] Return to Customer Options.");
         }
@@ -24,25 +25,25 @@ namespace StoreUI
                     break;
                 case "1":
                     val = MenuOptions.SearchCustomer;
-                    SearchCustomer();
+                    SearchCustomerByName();
                     break;
                 default:
                     Console.WriteLine("Your input could not be understood.");
                     val = MenuOptions.SearchCustomer;
+                    EnterToContinue();
                     break;
             }
             return val;
         }
 
-        private void SearchCustomer()
+        private void SearchCustomerByName()
         {
             Console.WriteLine("Please enter the customer's name.");
             string name = Console.ReadLine();
             Customer found = CustomerBL.SearchCustomer(name);
             if(found == null){
                 System.Console.WriteLine("The Customer you are looking for could not be found.");
-                System.Console.WriteLine("Press Enter to continue.");
-                Console.ReadLine();
+                EnterToContinue();
             }
             else
             {
@@ -52,8 +53,7 @@ namespace StoreUI
                 System.Console.WriteLine($"Email: {found.Email}");
                 System.Console.WriteLine($"Phone Number: {found.PhoneNumber}");
                 System.Console.WriteLine("==============================");
-                System.Console.WriteLine("Press Enter to continue.");
-                Console.ReadLine();
+                EnterToContinue();
             }
         }
     }

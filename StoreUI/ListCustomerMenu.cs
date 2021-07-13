@@ -5,7 +5,7 @@ using StoreModels;
 
 namespace StoreUI 
 {
-    public class ListCustomerMenu : IMenu
+    class ListCustomerMenu : AMenu, IMenu
     {
         public ListCustomerMenu()
         {
@@ -23,8 +23,8 @@ namespace StoreUI
 
         public MenuOptions YourChoice()
         {
-            Console.WriteLine("Press Enter to return to Customer Options");
-            Console.ReadLine();
+            Console.Write("To return to Customer Options ");
+            EnterToContinue();
             return MenuOptions.CustomerOptions;
         }
     }

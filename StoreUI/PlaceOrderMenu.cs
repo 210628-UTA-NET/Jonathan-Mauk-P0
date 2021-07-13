@@ -5,7 +5,7 @@ using StoreModels;
 
 namespace StoreUI
 {
-    public class PlaceOrderMenu : IMenu
+    class PlaceOrderMenu : AMenu, IMenu
     {
         public void Menu()
         {
@@ -28,6 +28,7 @@ namespace StoreUI
                     break;
                 default:
                     Console.WriteLine("Input could not be understood.");
+                    EnterToContinue();
                     break;
             }
             return option;
@@ -63,8 +64,7 @@ namespace StoreUI
                 Console.WriteLine("The Customer could not be found.");
             }
             
-            Console.WriteLine("Press Enter to continue ...");
-            Console.ReadLine();            
+            EnterToContinue();           
         }
 
         private StoreFront GetStoreFront() 
@@ -106,17 +106,18 @@ namespace StoreUI
                         catch (System.Exception)
                         {
                             Console.WriteLine("Input could not be understood.");
+                            EnterToContinue();
                         }
                         break;
                     default:
                         Console.WriteLine("Input could not be understood.");
+                        EnterToContinue();
                         break;
                 }
                 if (store == null)
                 {
                     Console.WriteLine("Store could not be found.");
-                    Console.WriteLine("Press Enter to try again.");
-                    Console.ReadLine();
+                    EnterToContinue();
                     repeat = true;
                 }
             }
@@ -172,8 +173,7 @@ namespace StoreUI
             catch (System.Exception)
             {
                 Console.WriteLine("Input could not be understood");
-                Console.WriteLine("Press Enter to continue");
-                Console.ReadLine();
+                EnterToContinue();
                 return;
             }
             
@@ -184,21 +184,18 @@ namespace StoreUI
                 if(!p_order.AddOrderItem(Int32.Parse(input), Int32.Parse(input2)))
                 {
                     Console.WriteLine("Not enough items in stock.");
-                    Console.WriteLine("Press Enter to continue");
-                    Console.ReadLine();
+                    EnterToContinue();
                 }
                 else
                 {
                     Console.WriteLine("Product added to cart.");
-                    Console.WriteLine("Press Enter to continue");
-                    Console.ReadLine();
+                    EnterToContinue();
                 }
             }
             catch (System.Exception)
             {
                 Console.WriteLine("Input could not be understood");
-                Console.WriteLine("Press Enter to continue");
-                Console.ReadLine();
+                EnterToContinue();
                 return;
             }
 

@@ -4,7 +4,7 @@ using StoreAppBL;
 
 namespace StoreUI
 {
-    class ViewStoreInvMenu : IMenu
+    class ViewStoreInvMenu : AMenu, IMenu
     {
         public void Menu()
         {
@@ -41,8 +41,7 @@ namespace StoreUI
                     {
                         Console.WriteLine("The Store you searched for could not be found");
                     }
-                    Console.WriteLine("Press enter to continue.");
-                    Console.ReadLine();
+                    EnterToContinue();
                     break;
                 case "0":
                     val = MenuOptions.InventoryOptions;

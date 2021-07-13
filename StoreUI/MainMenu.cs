@@ -2,7 +2,7 @@ using System;
 
 namespace StoreUI
 {
-    class MainMenu : IMenu
+    class MainMenu : AMenu, IMenu
     {
         public MainMenu()
         {
@@ -47,6 +47,7 @@ namespace StoreUI
                 default:
                     Console.WriteLine("Unable to determine input.");
                     val = MenuOptions.MainMenu;
+                    EnterToContinue();
                     break;
             }
             return val;

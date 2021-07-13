@@ -5,7 +5,7 @@ using StoreAppBL;
 
 namespace StoreUI
 {
-    public class ReplenishInventoryMenu : IMenu
+    class ReplenishInventoryMenu : AMenu, IMenu
     {
         public void Menu()
         {
@@ -37,12 +37,13 @@ namespace StoreUI
                     }
                     else
                     {
-                        Console.WriteLine("Store could not be found.\nPress Enter to continue.");
-                        Console.ReadLine();
+                        Console.WriteLine("Store could not be found.");
+                        EnterToContinue();
                     }
                     break;
                 default:
                     Console.WriteLine("Input could not be understood.");
+                    EnterToContinue();
                     break;
             }
             return menu;
@@ -69,6 +70,7 @@ namespace StoreUI
                 catch (System.Exception)
                 {
                     Console.WriteLine("Input could not be understood.");
+                    EnterToContinue();
                 }
             }
             return store;
@@ -91,6 +93,7 @@ namespace StoreUI
             catch (System.Exception)
             {
                 Console.WriteLine("Input could not be understood.");
+                EnterToContinue();
                 return;
             }
             
@@ -111,8 +114,7 @@ namespace StoreUI
             {
                 Console.WriteLine("Input could not be understood.");
             }
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
+            EnterToContinue();
         }
     }
 }

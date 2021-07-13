@@ -4,7 +4,7 @@ using StoreAppBL;
 
 namespace StoreUI
 {
-    class ViewOrderMenu : IMenu
+    class ViewOrderMenu : AMenu, IMenu
     {
         public void Menu()
         {
@@ -46,8 +46,7 @@ namespace StoreUI
                     {
                         Console.WriteLine("The store could not be found.");
                     }
-                    Console.WriteLine("Press Enter to continue.");
-                    Console.ReadLine();
+                    EnterToContinue();
                     break;
                 case "2":
                     Console.WriteLine("Enter the customer's name.");
@@ -73,13 +72,11 @@ namespace StoreUI
                     {
                         Console.WriteLine("The customer could not be found.");
                     }
-                    Console.WriteLine("Press Enter to continue.");
-                    Console.ReadLine();
+                    EnterToContinue();
                     break;
                 default:
                     Console.WriteLine("Your input could not be understood");
-                    Console.WriteLine("Press Enter to continue.");
-                    Console.ReadLine();
+                    EnterToContinue();
                     break;
             }
             return val;
