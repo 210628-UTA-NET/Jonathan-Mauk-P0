@@ -6,6 +6,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("[2] View a store's inventory");
             Console.WriteLine("[1] Replenish a store's inventory");
             Console.WriteLine("[0] Return to Main Menu");

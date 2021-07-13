@@ -13,6 +13,7 @@ namespace StoreUI
 
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("===== Customer List =====");
             foreach (Customer item in CustomerBL.ListCustomers())
             {

@@ -11,6 +11,7 @@ namespace StoreUI
 
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine(
 @"    ___   ________  _________
    /   | / ____/  |/  / ____/

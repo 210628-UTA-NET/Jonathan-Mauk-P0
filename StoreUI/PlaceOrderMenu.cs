@@ -9,6 +9,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("===== Place Order =====");
             Console.WriteLine("[1] Begin placing order.");
             Console.WriteLine("[0] Return to Order Options.");

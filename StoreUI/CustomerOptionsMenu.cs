@@ -6,6 +6,8 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
+
             Console.WriteLine("[3] Add a Customer");
             Console.WriteLine("[2] Search for a Customer");
             Console.WriteLine("[1] List Customers");

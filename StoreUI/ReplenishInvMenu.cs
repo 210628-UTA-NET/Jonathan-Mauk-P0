@@ -9,6 +9,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("===== Replenish Inventory =====");
             Console.WriteLine("[2] Choose store by name.");
             Console.WriteLine("[1] Browse stores");
@@ -22,7 +23,7 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
-                    menu = MenuOptions.MainMenu;
+                    menu = MenuOptions.InventoryOptions;
                     break;
                 case "1":
                     ShowInventory(ShowStores());
@@ -79,7 +80,9 @@ namespace StoreUI
         private void ShowInventory(StoreFront store)
         {
             List<LineItems> inventory = StoreFrontBL._storeFrontBL.FindStore(store.Id).Inventory;
+            Console.Clear();
 
+            Console.WriteLine($"Store Name: {store.Name}\t Address: {store.Address}");
             foreach (LineItems item in inventory)
             {
                 Console.WriteLine($"[{item.Id}] {item.Product.Name}\t {item.Count}");

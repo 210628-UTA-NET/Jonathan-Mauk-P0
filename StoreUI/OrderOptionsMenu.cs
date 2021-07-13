@@ -6,6 +6,8 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
+            
             Console.WriteLine("[2] View order history");
             Console.WriteLine("[1] Place an order");
             Console.WriteLine("[0] Return to Main Menu");

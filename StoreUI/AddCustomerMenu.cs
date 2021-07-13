@@ -7,6 +7,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("====Add Customer Menu====");
             Console.WriteLine("Welcome! Please enter the customer's information");
             Console.WriteLine("[1] Add a customer");
@@ -36,13 +37,13 @@ namespace StoreUI
 
         private void AddCustomer() 
         {
-            Console.WriteLine("Enter the customer's name.");
+            Console.WriteLine("Enter the new customer's name.");
             string name = Console.ReadLine();
-            Console.WriteLine("Enter the customer's address.");
+            Console.WriteLine("Enter the new customer's address.");
             string address = Console.ReadLine(); 
-            Console.WriteLine("Enter the customer's email.");
+            Console.WriteLine("Enter the new customer's email.");
             string email = Console.ReadLine(); 
-            Console.WriteLine("Enter the customer's phone number.");
+            Console.WriteLine("Enter the new customer's phone number.");
             string phoneNumber = Console.ReadLine(); 
             
             if (CustomerBL.AddCustomer(name, address, email, phoneNumber))

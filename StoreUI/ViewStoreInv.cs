@@ -9,6 +9,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("==== View Store Inventory ====");
             Console.WriteLine("Please choose an option.");
             Console.WriteLine("[2] Browse stores");
@@ -61,6 +62,7 @@ namespace StoreUI
 
         private StoreFront ChooseStore()
         {
+            Console.Clear();
             StoreFront store = null;
             Console.WriteLine("Please choose the store you wish to view.");
             List<StoreFront> stores = StoreFrontBL._storeFrontBL.RetrieveStores();
@@ -82,6 +84,7 @@ namespace StoreUI
 
         private void ListStoreInventory(StoreFront store)
         {
+            Console.Clear();
             Console.WriteLine("========================");
             Console.WriteLine($"Name: {store.Name}");
             Console.WriteLine($"Address: {store.Address}");

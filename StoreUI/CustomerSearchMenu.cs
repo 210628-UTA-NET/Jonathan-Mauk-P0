@@ -9,6 +9,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             System.Console.WriteLine("==== Customer Search Menu ====");
             System.Console.WriteLine("[2] Search a customer by Id.");
             System.Console.WriteLine("[1] Search a customer by name.");
@@ -114,6 +115,7 @@ namespace StoreUI
 
         private void ListCustomer(Customer customer)
         {
+            Console.Clear();
             System.Console.WriteLine("==============================");
             System.Console.WriteLine($"Name: {customer.Name}");
             System.Console.WriteLine($"Address: {customer.Address}");

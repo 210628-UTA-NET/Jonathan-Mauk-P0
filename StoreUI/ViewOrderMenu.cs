@@ -9,6 +9,7 @@ namespace StoreUI
     {
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine("===== View Orders =====");
             Console.WriteLine("[2] View a customer's order history.");
             Console.WriteLine("[1] View a storefront's order history.");
@@ -36,6 +37,8 @@ namespace StoreUI
                             string repeat = "val";
                             while (repeat != "")
                             {
+                                Console.Clear();
+                                Console.WriteLine($"Store Name: {store.Name}\t Address: {store.Address}");
                                 foreach (Orders order in store.Orders)
                                 {
                                     Console.WriteLine($"[{order.Id}] Customer Id: {order.CustomerId} Total Price: ${order.TotalPrice}");
@@ -64,6 +67,8 @@ namespace StoreUI
                             string repeat2 = "val";
                             while (repeat2 != "")
                             {
+                                Console.Clear();
+                                Console.WriteLine($"Customer Name: {customer.Name}\t Email: {customer.Email}");
                                 foreach (Orders order in customer.Orders)
                                 {
                                     Console.WriteLine($"[{order.Id}] Store Id: {order.LocationId} Total Price: ${order.TotalPrice}");
