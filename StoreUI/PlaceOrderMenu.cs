@@ -36,9 +36,6 @@ namespace StoreUI
 
         private void PlaceOrder()
         {
-            /*Console.WriteLine("Please enter the Customer's Name.");
-            string input = Console.ReadLine();
-            Customer customer = CustomerBL.SearchCustomer(input);*/
             CustomerSearchMenu customerSearch = new CustomerSearchMenu();
             Customer customer = customerSearch.SearchCustomerByName();
 
