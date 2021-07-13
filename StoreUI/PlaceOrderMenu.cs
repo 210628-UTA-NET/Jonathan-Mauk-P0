@@ -11,7 +11,7 @@ namespace StoreUI
         {
             Console.WriteLine("===== Place Order =====");
             Console.WriteLine("[1] Begin placing order.");
-            Console.WriteLine("[0] Return to Main Menu.");
+            Console.WriteLine("[0] Return to Order Options.");
         }
 
         public MenuOptions YourChoice()
@@ -21,7 +21,7 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
-                    option = MenuOptions.MainMenu;
+                    option = MenuOptions.OrderOptions;
                     break;
                 case "1":
                     PlaceOrder();

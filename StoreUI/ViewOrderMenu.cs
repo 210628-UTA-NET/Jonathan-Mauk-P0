@@ -11,7 +11,7 @@ namespace StoreUI
             Console.WriteLine("===== View Orders =====");
             Console.WriteLine("[2] View a customer's order history.");
             Console.WriteLine("[1] View a storefront's order history.");
-            Console.WriteLine("[0] Return to Main Menu.");
+            Console.WriteLine("[0] Return to Order Options.");
         }
 
         public MenuOptions YourChoice()
@@ -22,7 +22,7 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
-                    val = MenuOptions.MainMenu;
+                    val = MenuOptions.OrderOptions;
                     break;
                 case "1":
                     Console.WriteLine("Enter the storefront's name.");

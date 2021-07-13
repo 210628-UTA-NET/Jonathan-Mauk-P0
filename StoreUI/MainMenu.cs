@@ -11,15 +11,18 @@ namespace StoreUI
 
         public void Menu()
         {
-            Console.WriteLine("====Main Menu====");
+            Console.WriteLine(
+@"    ___   ________  _________
+   /   | / ____/  |/  / ____/
+  / /| |/ /   / /|_/ / __/   
+ / ___ / /___/ /  / / /___   
+/_/  |_\____/_/  /_/_____/   ");
+            Console.WriteLine();
             Console.WriteLine("Welcome! Please make a selection");
-            Console.WriteLine("[7] Place Order");
-            Console.WriteLine("[6] View Order Inventory");
-            Console.WriteLine("[5] Replenish Store Inventory");
-            Console.WriteLine("[4] View Store Inventory");
-            Console.WriteLine("[3] Search Customer");
-            Console.WriteLine("[2] Add Customer");
-            Console.WriteLine("[1] List Customers");
+            Console.WriteLine();
+            Console.WriteLine("[3] Orders");
+            Console.WriteLine("[2] Store Inventory");
+            Console.WriteLine("[1] Customers");
             Console.WriteLine("[0] Exit");
         }
 
@@ -33,28 +36,16 @@ namespace StoreUI
                 val = MenuOptions.Exit;
                     break;
                 case "1":
-                    val = MenuOptions.ListCustomerMenu;
+                    val = MenuOptions.CustomerOptions;
                     break;
                 case "2":
-                    val = MenuOptions.AddCustomerMenu;
+                    val = MenuOptions.InventoryOptions;
                     break;
                 case "3":
-                    val = MenuOptions.SearchCustomer;
-                    break;
-                case "4":
-                    val = MenuOptions.ViewStoreInv;
-                    break;
-                case "5":
-                    val = MenuOptions.ReplenishInventory;
-                    break;
-                case "6":
-                    val = MenuOptions.ViewOrderHistory;
-                    break;
-                case "7":
-                    val = MenuOptions.PlaceOrder;
+                    val = MenuOptions.OrderOptions;
                     break;
                 default:
-                    Console.WriteLine("Unable todetermine input.");
+                    Console.WriteLine("Unable to determine input.");
                     val = MenuOptions.MainMenu;
                     break;
             }

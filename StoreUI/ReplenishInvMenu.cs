@@ -12,7 +12,7 @@ namespace StoreUI
             Console.WriteLine("===== Replenish Inventory =====");
             Console.WriteLine("[2] Choose store by name.");
             Console.WriteLine("[1] Browse stores");
-            Console.WriteLine("[0] Return to Main Menu.");
+            Console.WriteLine("[0] Return to Inventory Options");
         }
 
         public MenuOptions YourChoice()

@@ -10,7 +10,7 @@ namespace StoreUI
         {
             System.Console.WriteLine("==== Customer Search Menu ====");
             System.Console.WriteLine("[1] Search a customer by name.");
-            System.Console.WriteLine("[0] Return to Main Menu.");
+            System.Console.WriteLine("[0] Return to Customer Options.");
         }
 
         public MenuOptions YourChoice()
@@ -20,7 +20,7 @@ namespace StoreUI
             switch (info)
             {
                 case "0":
-                    val = MenuOptions.MainMenu;
+                    val = MenuOptions.CustomerOptions;
                     break;
                 case "1":
                     val = MenuOptions.SearchCustomer;

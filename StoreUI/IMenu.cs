@@ -5,14 +5,16 @@ namespace StoreUI
     public enum MenuOptions
     {
         MainMenu,
-        AddCustomer,
+        CustomerOptions,
         AddCustomerMenu,
         ListCustomerMenu,
         SearchCustomer,
+        InventoryOptions,
         ViewStoreInv,
+        ReplenishInventory,
+        OrderOptions,
         PlaceOrder,
         ViewOrderHistory,
-        ReplenishInventory,
         Exit
     }
     public interface IMenu

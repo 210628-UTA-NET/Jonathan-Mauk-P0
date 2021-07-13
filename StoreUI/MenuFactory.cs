@@ -12,6 +12,9 @@ namespace StoreUI
                 case MenuOptions.Exit:
                     menu = null;
                     break;
+                case MenuOptions.CustomerOptions:
+                    menu = new CustomerOptionsMenu();
+                    break;
                 case MenuOptions.ListCustomerMenu:
                     menu = new ListCustomerMenu();
                     break;
@@ -24,11 +27,17 @@ namespace StoreUI
                 case MenuOptions.SearchCustomer:
                     menu = new CustomerSearchMenu();
                     break;
+                case MenuOptions.InventoryOptions:
+                    menu = new InventoryOptionsMenu();
+                    break;
                 case MenuOptions.ViewStoreInv:
                     menu = new ViewStoreInvMenu();
                     break;
                 case MenuOptions.ReplenishInventory:
                     menu = new ReplenishInventoryMenu();
+                    break;
+                case MenuOptions.OrderOptions:
+                    menu = new OrderOptionsMenu();
                     break;
                 case MenuOptions.ViewOrderHistory:
                     menu = new ViewOrderMenu();

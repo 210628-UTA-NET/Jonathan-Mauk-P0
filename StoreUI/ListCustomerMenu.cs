@@ -23,9 +23,9 @@ namespace StoreUI
 
         public MenuOptions YourChoice()
         {
-            Console.WriteLine("Press Enter to return to the main menu");
+            Console.WriteLine("Press Enter to return to Customer Options");
             Console.ReadLine();
-            return MenuOptions.MainMenu;
+            return MenuOptions.CustomerOptions;
         }
     }
 }

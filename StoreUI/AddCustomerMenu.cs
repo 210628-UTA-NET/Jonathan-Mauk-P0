@@ -9,8 +9,8 @@ namespace StoreUI
         {
             Console.WriteLine("====Add Customer Menu====");
             Console.WriteLine("Welcome! Please enter the customer's information");
-            Console.WriteLine("[1] Add a customer.");
-            Console.WriteLine("[0] Return to Main Menu.");
+            Console.WriteLine("[1] Add a customer");
+            Console.WriteLine("[0] Return to Customer Options");
         }
 
         public MenuOptions YourChoice()
@@ -19,7 +19,7 @@ namespace StoreUI
             switch (info)
             {
                 case "0":
-                    return MenuOptions.MainMenu;
+                    return MenuOptions.CustomerOptions;
                 case "1":
                     AddCustomer();
                     break;

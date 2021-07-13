@@ -10,8 +10,8 @@ namespace StoreUI
         {
             Console.WriteLine("==== View Store Inventory ====");
             Console.WriteLine("Please choose an option.");
-            Console.WriteLine("[1] View a store's inventory.");
-            Console.WriteLine("[0] Go back to main menu");
+            Console.WriteLine("[1] View a store's inventory");
+            Console.WriteLine("[0] Go back to Inventory Options");
         }
 
         public MenuOptions YourChoice()
@@ -45,7 +45,7 @@ namespace StoreUI
                     Console.ReadLine();
                     break;
                 case "0":
-                    val = MenuOptions.MainMenu;
+                    val = MenuOptions.InventoryOptions;
                     break;
                 default:
                     Console.WriteLine("Your Input could not be understood.");
